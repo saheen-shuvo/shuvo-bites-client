@@ -54,7 +54,7 @@ const Navbar = () => {
   };
 
   return (
-    <div className="navbar bg-base-100">
+    <div className="navbar fixed z-10 bg-opacity-30  bg-amber-700/50">
       <div className="navbar-start">
         <div className="dropdown">
           <div tabIndex={0} role="button" className="btn btn-ghost lg:hidden">
@@ -84,8 +84,8 @@ const Navbar = () => {
           <p className="text-xl font-bold text-green-800">
             
           </p>
-          <p className="text-sm md:text-xl font-bold inline text-yellow-500">
-            Shuvo<span className="text-green-500">Bites</span>
+          <p className="text-sm md:text-xl font-bold inline text-red-600">
+            Shuvo<span className="text-yellow-400">Bites</span>
           </p>
         </div>
       </div>

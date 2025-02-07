@@ -1,6 +1,7 @@
 /* eslint-disable react/jsx-key */
 import MenuItemCard from "../../shared/MenuItemCard";
 import useMenu from "../../hooks/useMenu";
+import { Link } from "react-router-dom";
 
 const PopularMenu = () => {
     const [menu] = useMenu();
@@ -15,6 +16,11 @@ const PopularMenu = () => {
         {
             popular.map(item =><MenuItemCard item={item}></MenuItemCard>)
         }
+      </div>
+      <div className="flex justify-center my-4">
+        <Link to='/menu'>
+        <button className="btn btn-primary mt-4 border-0 border-b-4 border-blue-950">VIEW FULL MENU</button>
+        </Link>
       </div>
     </div>
   );

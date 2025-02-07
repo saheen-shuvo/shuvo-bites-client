@@ -7,6 +7,7 @@ import slider2 from '../../assets/home/slide2.jpg';
 import slider3 from '../../assets/home/slide3.jpg';
 import slider4 from '../../assets/home/slide4.jpg';
 import slider5 from '../../assets/home/slide5.jpg';
+import { Link } from "react-router-dom";
 
 const slides = [
   { img: slider1, title: "Salads" },
@@ -41,6 +42,11 @@ const Category = () => {
           </SwiperSlide>
         ))}
       </Swiper>
+      <div className="flex justify-center my-4">
+        <Link to='/orderfood'>
+        <button className="btn btn-primary mt-4 border-0 border-b-4 border-blue-950">ORDER NOW</button>
+        </Link>
+      </div>
     </div>
   );
 };

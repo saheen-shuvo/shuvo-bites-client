@@ -1,24 +1,22 @@
-// import { useContext, useEffect, useState } from "react";
-// import { LiaLanguageSolid } from "react-icons/lia";
-import { useEffect, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import { NavLink } from "react-router-dom";
-// import AuthContext from "../../context/AuthContext/AuthContext";
-// import { MdLogout } from "react-icons/md";
+import { MdLogout } from "react-icons/md";
+import AuthContext from "../context/AuthContext/AuthContext";
 
 const Navbar = () => {
-//   const { user, signOutUser } = useContext(AuthContext);
+  const { user, signOutUser } = useContext(AuthContext);
   const [theme, setTheme] = useState(
     localStorage.getItem("theme") ? localStorage.getItem("theme") : "light"
   );
-//   const handleSignOut = () => {
-//     signOutUser()
-//       .then(() => {
-//         console.log("Successfully signed out");
-//       })
-//       .catch((error) => {
-//         console.log("Signout error", error);
-//       });
-//   };
+  const handleSignOut = () => {
+    signOutUser()
+      .then(() => {
+        console.log("Successfully signed out");
+      })
+      .catch((error) => {
+        console.log("Signout error", error);
+      });
+  };
 
   useEffect(() => {
     localStorage.setItem("theme", theme);
@@ -26,24 +24,29 @@ const Navbar = () => {
     document.querySelector("html").setAttribute("data-theme", localTheme);
   }, [theme]);
 
-  const links = 
-    <>
+  const links = user ? (
+  <>
       <li className="font-semibold">
         <NavLink to="/">Home</NavLink>
       </li>
-      <li>
+      <li className="font-semibold">
         <NavLink to="/menu">Our Menu</NavLink>
       </li>
-      <li>
+      <li className="font-semibold">
         <NavLink to="/orderfood">Order Food</NavLink>
       </li>
-      <li>
-        <NavLink to="/myaddedtutorials">My Tutorials</NavLink>
+  </>
+) : (
+  <>
+      <li className="font-semibold">
+        <NavLink to="/">Home</NavLink>
       </li>
-      <li>
-        <NavLink to="/mybookedtutors">My Booked Tutors</NavLink>
+      <li className="font-semibold">
+        <NavLink to="/menu">Our Menu</NavLink>
       </li>
-    </>
+  </>
+);
+
 
   const handleToggle = (e) => {
     if (e.target.checked) {
@@ -93,7 +96,7 @@ const Navbar = () => {
         <ul className="menu menu-horizontal px-1">{links}</ul>
       </div>
       <div className="navbar-end">
-        {/* {user ? (
+        {user ? (
           <>
             <div className="relative flex items-center gap-2 md:gap-6">
               <div className="relative group">
@@ -125,7 +128,7 @@ const Navbar = () => {
               <NavLink to="/signin">Sign in</NavLink>
             </p>
           </>
-        )} */}
+        )}
       </div>
       <label className="swap swap-rotate">
         <input

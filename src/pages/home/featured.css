@@ -6,3 +6,11 @@
     background-repeat: no-repeat;
     background-attachment: fixed;
 }
+.auth-bg{
+    background-image: linear-gradient(rgba(0, 0, 0, 0.1), rgba(0, 0, 0, 0.1)), 
+                      url('../../assets/others/authentication.png');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+}

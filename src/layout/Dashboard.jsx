@@ -49,6 +49,7 @@ const Dashboard = () => {
 
           <div className="divider"></div>
 
+{/* SHARED NAV LINKS */}
           <li>
             <NavLink to="/">
               <FiHome />

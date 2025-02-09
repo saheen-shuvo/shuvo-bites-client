@@ -1,4 +1,3 @@
-// import SocialLogin from "../shared/SocialLogin";
 import { useContext, useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { FaEye, FaEyeSlash } from "react-icons/fa";
@@ -7,9 +6,12 @@ import { updateProfile } from "firebase/auth";
 import "react-toastify/dist/ReactToastify.css";
 import AuthContext from "../../context/AuthContext/AuthContext";
 import authImg from "../../assets/others/authentication2.png"
+import useAxiosPublic from "../../hooks/useAxiosPublic";
+import SocialLogin from "../../shared/SocialLogin";
 
 
 const Register = () => {
+  const axiosPublic = useAxiosPublic();
   const [showPass, setShowPass] = useState(false);
   const navigate = useNavigate();
   const { createUser, setLoading, setUser } = useContext(AuthContext);
@@ -66,17 +68,16 @@ const Register = () => {
 
       toast.success("Account created successfully!");
 
-      // const newUser = { username, email };
-      // await fetch("https://sportify-zone-server.vercel.app/users", {
-      //   method: "POST",
-      //   headers: {
-      //     "Content-Type": "application/json",
-      //   },
-      //   body: JSON.stringify(newUser),
-      // });
+      const userInfo = { username, email };
 
-      form.reset();
-      navigate("/");
+      axiosPublic.post('/users', userInfo)
+      .then(res => {
+        if(res.data.insertedId){
+          form.reset();
+          navigate("/");
+        }
+      })
+
     } catch (error) {
       console.error("Error creating account:", error.message);
       toast.error(error.message);
@@ -161,9 +162,9 @@ const Register = () => {
             <button className="btn btn-primary w-full">Sign up</button>
           </div>
           <div className="divider my-0">OR</div>
-          {/* <div className="flex justify-center">
+          <div className="flex justify-center">
             <SocialLogin />
-          </div> */}
+          </div>
         </form>
         <p className="text-xs text-center mt-4">
           Already have an account?{" "}
@@ -172,8 +173,6 @@ const Register = () => {
           </Link>
         </p>
       </div>
-
-      {/* Lottie Animation */}
       <div className="w-full lg:w-[30%] flex justify-center mt-16 lg:mt-0">
       <img src={authImg} alt="" />
       </div>

@@ -1,7 +1,6 @@
 /* eslint-disable no-unused-vars */
 /* eslint-disable react/no-unescaped-entities */
 import { useContext, useEffect, useRef, useState } from "react";
-// import SocialLogin from "../shared/SocialLogin";
 import { Link, useLocation, useNavigate } from "react-router-dom";
 // import axios from "axios";
 import AuthContext from "../../context/AuthContext/AuthContext";
@@ -12,6 +11,7 @@ import {
   validateCaptcha,
 } from "react-simple-captcha";
 import authImg from "../../assets/others/authentication2.png";
+import SocialLogin from "../../shared/SocialLogin";
 
 const SignIn = () => {
   const captchaRef = useRef(null);
@@ -132,9 +132,9 @@ const SignIn = () => {
           </div>
         </form>
         <div className="divider">OR</div>
-        {/* <div className="flex justify-center">
+        <div className="flex justify-center">
           <SocialLogin />
-        </div> */}
+        </div>
       </div>
     </div>
   );

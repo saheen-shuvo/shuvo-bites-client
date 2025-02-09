@@ -5,7 +5,7 @@ import Menu from "../pages/menu/Menu";
 import OderFood from "../pages/order/orderFood/OderFood";
 import Register from "../pages/register/Register";
 import SignIn from "../pages/signin/SignIn";
-import PrivateRoute from "./PrivateRoute";
+// import PrivateRoute from "./PrivateRoute";
 
 export const router = createBrowserRouter([
   {
@@ -23,9 +23,9 @@ export const router = createBrowserRouter([
       {
         path: "/orderfood",
         element: (
-          <PrivateRoute>
+
             <OderFood></OderFood>
-          </PrivateRoute>
+
         ),
       },
       {

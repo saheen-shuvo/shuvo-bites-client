@@ -2,9 +2,12 @@ import { useContext, useEffect, useState } from "react";
 import { NavLink } from "react-router-dom";
 import { MdLogout } from "react-icons/md";
 import AuthContext from "../context/AuthContext/AuthContext";
+import { RiShoppingCart2Fill } from "react-icons/ri";
+import useCart from "../hooks/useCart";
 
 const Navbar = () => {
   const { user, signOutUser } = useContext(AuthContext);
+  const [cart] = useCart();
   const [theme, setTheme] = useState(
     localStorage.getItem("theme") ? localStorage.getItem("theme") : "light"
   );
@@ -25,7 +28,7 @@ const Navbar = () => {
   }, [theme]);
 
   const links = user ? (
-  <>
+    <>
       <li className="font-semibold">
         <NavLink to="/">Home</NavLink>
       </li>
@@ -35,18 +38,28 @@ const Navbar = () => {
       <li className="font-semibold">
         <NavLink to="/orderfood">Order Food</NavLink>
       </li>
-  </>
-) : (
-  <>
+      <li className="font-semibold">
+        <NavLink to="/">
+          <button className="flex justify-center items-center gap-1">
+            <RiShoppingCart2Fill />
+            <div className="badge badge-secondary">${cart.length}</div>
+          </button>
+        </NavLink>
+      </li>
+    </>
+  ) : (
+    <>
       <li className="font-semibold">
         <NavLink to="/">Home</NavLink>
       </li>
       <li className="font-semibold">
         <NavLink to="/menu">Our Menu</NavLink>
       </li>
-  </>
-);
-
+      <li className="font-semibold">
+        <NavLink to="/orderfood">Order Food</NavLink>
+      </li>
+    </>
+  );
 
   const handleToggle = (e) => {
     if (e.target.checked) {
@@ -84,9 +97,7 @@ const Navbar = () => {
           </ul>
         </div>
         <div className="flex items-center gap-1">
-          <p className="text-xl font-bold text-green-800">
-            
-          </p>
+          <p className="text-xl font-bold text-green-800"></p>
           <p className="text-sm md:text-xl font-bold inline text-red-600">
             Shuvo<span className="text-yellow-400">Bites</span>
           </p>

@@ -39,10 +39,10 @@ const Navbar = () => {
         <NavLink to="/orderfood">Order Food</NavLink>
       </li>
       <li className="font-semibold">
-        <NavLink to="/">
+        <NavLink to="/dashboard/cart">
           <button className="flex justify-center items-center gap-1">
             <RiShoppingCart2Fill />
-            <div className="badge badge-secondary">${cart.length}</div>
+            <div className="badge badge-secondary">+{cart.length}</div>
           </button>
         </NavLink>
       </li>

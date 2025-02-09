@@ -5,6 +5,8 @@ import Menu from "../pages/menu/Menu";
 import OderFood from "../pages/order/orderFood/OderFood";
 import Register from "../pages/register/Register";
 import SignIn from "../pages/signin/SignIn";
+import Dashboard from "../layout/Dashboard";
+import Cart from "../pages/dashboard/cart/Cart";
 // import PrivateRoute from "./PrivateRoute";
 
 export const router = createBrowserRouter([
@@ -38,4 +40,14 @@ export const router = createBrowserRouter([
       },
     ],
   },
+  {
+    path: 'dashboard',
+    element: <Dashboard></Dashboard>,
+    children: [
+      {
+        path: 'cart',
+        element: <Cart></Cart>
+      }
+    ]
+  }
 ]);

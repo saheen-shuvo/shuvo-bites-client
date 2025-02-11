@@ -20,7 +20,7 @@ const Register = () => {
     e.preventDefault();
 
     const form = e.target;
-    const username = form.username.value;
+    const name = form.name.value;
     const email = form.email.value;
     const password = form.password.value;
     const photo = form.photo?.value || "";
@@ -60,15 +60,15 @@ const Register = () => {
       const user = result.user;
 
       await updateProfile(user, {
-        displayName: username,
+        displayName: name,
         photoURL: photo,
       });
 
-      setUser({ ...user, displayName: username, photoURL: photo });
+      setUser({ ...user, displayName: name, photoURL: photo });
 
       toast.success("Account created successfully!");
 
-      const userInfo = { username, email };
+      const userInfo = { name, email };
 
       axiosPublic.post('/users', userInfo)
       .then(res => {
@@ -100,7 +100,7 @@ const Register = () => {
             </label>
             <input
               type="text"
-              name="username"
+              name="name"
               placeholder="Username"
               className="input input-bordered"
               required

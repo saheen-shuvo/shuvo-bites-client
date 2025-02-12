@@ -1,10 +1,10 @@
 /* eslint-disable react/jsx-key */
-/* eslint-disable react/jsx-no-undef */
 import { MdDeleteForever } from "react-icons/md";
 import useMenu from "../../../hooks/useMenu";
 import { FaEdit } from "react-icons/fa";
 import Swal from "sweetalert2";
 import useAxiosSecure from "../../../hooks/useAxiosSecure";
+import { Link } from "react-router-dom";
 
 const ManageItems = () => {
   const [menu, , refetch] = useMenu();
@@ -19,19 +19,19 @@ const ManageItems = () => {
       confirmButtonColor: "#3085d6",
       cancelButtonColor: "#d33",
       confirmButtonText: "Yes, delete it!",
-    }).then( async (result) => {
+    }).then(async (result) => {
       if (result.isConfirmed) {
         const res = await axiosSecure.delete(`/menu/${item._id}`);
         // console.log(res.data)
-        if(res.data.deletedCount > 0){
-            refetch();
-            Swal.fire({
-                position: 'center',
-                title: `${item.name} has been deleted.`,
-                showConfirmButton: false,
-                timer: 1500,
-                icon: "success",
-              });
+        if (res.data.deletedCount > 0) {
+          refetch();
+          Swal.fire({
+            position: "center",
+            title: `${item.name} has been deleted.`,
+            showConfirmButton: false,
+            timer: 1500,
+            icon: "success",
+          });
         }
       }
     });
@@ -74,12 +74,11 @@ const ManageItems = () => {
                 <td className="font-semibold">{item.name}</td>
                 <td className="font-semibold">${item.price}</td>
                 <th>
-                  <button
-                    onClick={() => handleDeleteItem(item)}
-                    className="text-2xl text-green-600"
-                  >
-                    <FaEdit />
-                  </button>
+                  <Link to={`/dashboard/updateitem/${item._id}`}>
+                    <button className="text-2xl text-green-600">
+                      <FaEdit />
+                    </button>
+                  </Link>
                 </th>
                 <th>
                   <button

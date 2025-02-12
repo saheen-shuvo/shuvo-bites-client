@@ -1,16 +1,19 @@
+/* eslint-disable react/jsx-key */
 import { useForm } from "react-hook-form";
-import { FaUtensils } from "react-icons/fa";
+import { useLoaderData, useNavigate } from "react-router-dom";
+import Swal from "sweetalert2";
 import useAxiosPublic from "../../../hooks/useAxiosPublic";
 import useAxiosSecure from "../../../hooks/useAxiosSecure";
-import Swal from "sweetalert2";
 
-const image_hosting_key = import.meta.env.VITE_IMAGE_HOSTING_KEY;
-const image_hosting_api = `https://api.imgbb.com/1/upload?key=${image_hosting_key}`;
-
-const AddItems = () => {
+const UpdateItem = () => {
   const { register, handleSubmit, reset } = useForm();
+  const { name, category, recipe, price, _id } = useLoaderData();
+
   const axiosPublic = useAxiosPublic();
   const axiosSecure = useAxiosSecure();
+
+  const image_hosting_key = import.meta.env.VITE_IMAGE_HOSTING_KEY;
+  const image_hosting_api = `https://api.imgbb.com/1/upload?key=${image_hosting_key}`;
 
   const onSubmit = async (data) => {
     console.log(data);
@@ -29,13 +32,13 @@ const AddItems = () => {
         recipe: data.recipe,
         image: res.data.data.display_url,
       };
-      const menuRes = await axiosSecure.post("/menu", menuItem);
+      const menuRes = await axiosSecure.patch(`/menu/${_id}`, menuItem);
       console.log(menuRes.data);
-      if (menuRes.data.insertedId) {
+      if (menuRes.data.modifiedCount > 0) {
         reset();
         Swal.fire({
           position: "center",
-          title: `${data.name} is added to the menu.`,
+          title: `${data.name} is updated to the menu.`,
           showConfirmButton: false,
           icon: "success",
           timer: 1500,
@@ -47,10 +50,8 @@ const AddItems = () => {
 
   return (
     <div>
-      <div className="pt-12">
-        <div className="text-center sm:text-xl lg:text-3xl border-y-2 w-64 border-dashed font-semibold border-gray-400 mx-auto">
-          ADD AN ITEM
-        </div>
+      <div className="text-center sm:text-xl lg:text-3xl border-y-2 w-72 border-dashed font-semibold border-gray-400 mx-auto">
+        UPDATE AN ITEM
       </div>
       <div className="">
         <form onSubmit={handleSubmit(onSubmit)}>
@@ -62,6 +63,7 @@ const AddItems = () => {
               {...register("name")}
               required
               type="text"
+              defaultValue={name}
               placeholder="recipe name"
               className="input input-bordered w-full "
             />
@@ -74,7 +76,7 @@ const AddItems = () => {
                 <span className="label-text">Category</span>
               </div>
               <select
-                defaultValue="default"
+                defaultValue={category}
                 {...register("category")}
                 required
                 className="select select-bordered w-full "
@@ -98,6 +100,7 @@ const AddItems = () => {
                 {...register("price")}
                 type="number"
                 placeholder="price"
+                defaultValue={price}
                 required
                 className="input input-bordered w-full "
               />
@@ -112,6 +115,7 @@ const AddItems = () => {
             <textarea
               {...register("recipe")}
               required
+              defaultValue={recipe}
               className="textarea textarea-bordered h-24"
               placeholder="recipe details"
             ></textarea>
@@ -129,9 +133,7 @@ const AddItems = () => {
 
           {/* BUTTON */}
           <div className="my-4 flex justify-center">
-            <button className="btn btn-primary">
-              ADD ITEM <FaUtensils></FaUtensils>
-            </button>
+            <button className="btn btn-primary">UPDATE MENU ITEM</button>
           </div>
         </form>
       </div>
@@ -139,4 +141,4 @@ const AddItems = () => {
   );
 };
 
-export default AddItems;
+export default UpdateItem;

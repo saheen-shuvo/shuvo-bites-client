@@ -12,15 +12,16 @@ const Menu = () => {
     const dessert = menu.filter(item => item.category === 'dessert');
     const soup = menu.filter(item => item.category === 'soup');
     const salad = menu.filter(item => item.category === 'salad');
-    const offered = menu.filter(item => item.category === 'offered');
+    // const offered = menu.filter(item => item.category === 'offered');
+    const pizza = menu.filter(item => item.category === 'pizza');
   return (
     <div className="">
-      <Cover menuImg={menuImg} title="our menu"></Cover>
+      <Cover menuImg={menuImg} title="PIZZA"></Cover>
       <div className="text-center sm:text-xl lg:text-3xl border-y-2 w-64 lg:w-72 border-dashed font-semibold border-gray-400 mx-auto my-8">
         TODAYS OFFER
       </div>
       <div className="max-w-screen-xl mx-auto px-4 my-8 lg:my-16 ">
-      <MenuCategory items={offered}></MenuCategory>
+      <MenuCategory items={pizza}></MenuCategory>
       </div>
       <div className="flex justify-center my-4">
         <Link to='/orderfood'>

@@ -1,4 +1,14 @@
-import { FaBook, FaCalendar, FaHome, FaList, FaShoppingCart, FaUser, FaUsers, FaUtensils } from "react-icons/fa";
+import {
+  FaBook,
+  FaCalendar,
+  FaHistory,
+  FaHome,
+  FaList,
+  FaShoppingCart,
+  FaUser,
+  FaUsers,
+  FaUtensils,
+} from "react-icons/fa";
 import { FaBookBookmark } from "react-icons/fa6";
 import { FiHome } from "react-icons/fi";
 import { LuContact } from "react-icons/lu";
@@ -56,7 +66,37 @@ const Dashboard = () => {
               </li>
             </>
           ) : (
-            <></>
+            <>
+              <li>
+                <NavLink to="/dashboard/userhome">
+                  <FaHome></FaHome>User Home
+                </NavLink>
+              </li>
+
+              <li>
+                <NavLink to="/dashboard/mybooking">
+                  <FaBookBookmark></FaBookBookmark>My Bookings
+                </NavLink>
+              </li>
+
+              <li>
+                <NavLink to="/dashboard/cart">
+                  <FaShoppingCart></FaShoppingCart> My Cart
+                </NavLink>
+              </li>
+
+              <li>
+                <NavLink to="/dashboard/addreview">
+                  <MdReviews></MdReviews> Add a Review
+                </NavLink>
+              </li>
+
+              <li>
+                <NavLink to="/dashboard/paymenthistory">
+                  <FaHistory></FaHistory> Payment History
+                </NavLink>
+              </li>
+            </>
           )}
 
           <div className="divider"></div>

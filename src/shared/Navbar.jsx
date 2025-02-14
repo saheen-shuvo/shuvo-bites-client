@@ -1,12 +1,14 @@
 import { useContext, useEffect, useState } from "react";
-import { NavLink } from "react-router-dom";
+import { Link, NavLink } from "react-router-dom";
 import { MdLogout } from "react-icons/md";
 import AuthContext from "../context/AuthContext/AuthContext";
 import { RiShoppingCart2Fill } from "react-icons/ri";
 import useCart from "../hooks/useCart";
+import useAdmin from "../hooks/useAdmin";
 
 const Navbar = () => {
   const { user, signOutUser } = useContext(AuthContext);
+  const [isAdmin] = useAdmin();
   const [cart] = useCart();
   const [theme, setTheme] = useState(
     localStorage.getItem("theme") ? localStorage.getItem("theme") : "light"
@@ -38,6 +40,12 @@ const Navbar = () => {
       <li className="font-semibold">
         <NavLink to="/orderfood">Order Food</NavLink>
       </li>
+      {
+        user && isAdmin && <li><Link to='/dashboard/adminhome'>Dashboard</Link></li>
+      }
+      {
+        user && !isAdmin && <li><Link to='/dashboard/userhome'>Dashboard</Link></li>
+      }
       <li className="font-semibold">
         <NavLink to="/dashboard/cart">
           <button className="flex justify-center items-center gap-1">

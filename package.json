@@ -29,6 +29,7 @@
     "react-simple-captcha": "^9.3.1",
     "react-tabs": "^6.1.0",
     "react-toastify": "^11.0.3",
+    "recharts": "^2.15.1",
     "sort-by": "^1.2.0",
     "sweetalert2": "^11.16.0",
     "swiper": "^11.2.2",

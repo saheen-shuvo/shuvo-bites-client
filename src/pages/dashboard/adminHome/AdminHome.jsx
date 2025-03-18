@@ -31,6 +31,7 @@ const AdminHome = () => {
       return res.data;
     },
   });
+  console.log(stats)
 
   const { data: chartData = [] } = useQuery({
     queryKey: ["order-stats"],
@@ -39,6 +40,7 @@ const AdminHome = () => {
       return res.data;
     },
   });
+  console.log(chartData)
 
   // CUSTOM SHAPE FOR THE BAR CHART
   const getPath = (x, y, width, height) => {

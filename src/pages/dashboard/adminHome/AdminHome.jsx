@@ -1,3 +1,4 @@
+/* eslint-disable react/prop-types */
 import useAuth from "../../../hooks/useAuth";
 import { useQuery } from "@tanstack/react-query";
 import useAxiosSecure from "../../../hooks/useAxiosSecure";

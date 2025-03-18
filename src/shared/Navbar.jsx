@@ -42,10 +42,10 @@ const Navbar = () => {
         <NavLink to="/orderfood">Order Food</NavLink>
       </li>
       {
-        user && isAdmin && <li><Link to='/dashboard/adminhome'>Dashboard</Link></li>
+        user && isAdmin && <li className="font-semibold"><Link to='/dashboard/adminhome'>Dashboard</Link></li>
       }
       {
-        user && !isAdmin && <li><Link to='/dashboard/userhome'>Dashboard</Link></li>
+        user && !isAdmin && <li className="font-semibold"><Link to='/dashboard/userhome'>Dashboard</Link></li>
       }
       <li className="font-semibold">
         <NavLink to="/dashboard/cart">
@@ -79,7 +79,7 @@ const Navbar = () => {
   };
 
   return (
-    <div className="navbar fixed z-10 bg-[#FFC300] text-[#001F3F] md:px-16">
+    <div className="navbar fixed z-10 bg-[#FFC300] md:px-16">
       <div className="navbar-start">
         <div className="dropdown">
           <div tabIndex={0} role="button" className="btn btn-ghost lg:hidden">

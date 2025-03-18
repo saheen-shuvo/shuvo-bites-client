@@ -1,5 +1,5 @@
 /* eslint-disable react/prop-types */
-const Cover = ({menuImg, title}) => {
+const Cover = ({menuImg, title, description}) => {
 
   return (
     <div
@@ -14,9 +14,7 @@ const Cover = ({menuImg, title}) => {
         <div className="max-w-md">
           <h1 className="mb-5 text-5xl font-bold uppercase">{title}</h1>
           <p className="mb-5">
-            Provident cupiditate voluptatem et in. Quaerat fugiat ut assumenda
-            excepturi exercitationem quasi. In deleniti eaque aut repudiandae et
-            a id nisi.
+            {description}
           </p>
         </div>
       </div>

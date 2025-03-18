@@ -1,5 +1,4 @@
 import { useForm } from "react-hook-form";
-import { FaUtensils } from "react-icons/fa";
 import useAxiosPublic from "../../../hooks/useAxiosPublic";
 import useAxiosSecure from "../../../hooks/useAxiosSecure";
 import Swal from "sweetalert2";
@@ -129,8 +128,8 @@ const AddItems = () => {
 
           {/* BUTTON */}
           <div className="my-4 flex justify-center">
-            <button className="btn btn-primary">
-              ADD ITEM <FaUtensils></FaUtensils>
+            <button className="styled-btn">
+              ADD ITEM
             </button>
           </div>
         </form>

@@ -3,10 +3,10 @@
 import Cover from "../../shared/cover/Cover";
 import MenuItemCard from "../../shared/MenuItemCard";
 
-const MenuCategory = ({ items, title, img }) => {
+const MenuCategory = ({ items, title, img, description }) => {
   return (
     <div>
-    {title && <Cover menuImg={img} title={title}></Cover>}
+    {title && <Cover menuImg={img} title={title} description={description}></Cover>}
       <div className="grid md:grid-cols-2 gap-8 my-8 max-w-screen-xl mx-auto px-4 lg:my-16">
         {items.map((item) => (
           <MenuItemCard item={item}></MenuItemCard>

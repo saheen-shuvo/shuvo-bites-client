@@ -55,7 +55,7 @@ const AllUsers = () => {
       if (result.isConfirmed) {
         axiosSecure.delete(`/allusers/${user._id}`).then((res) => {
           refetch();
-          if (res.data.deleteCount > 1) {
+          if (res.data.deletedCount > 0) {
             Swal.fire({
               title: "Deleted!",
               text: "The user has been deleted.",

@@ -4,7 +4,7 @@ import featuredImg from "../../assets/home/featured.jpg";
 import "./featured.css";
 const Featured = () => {
   return (
-    <div className="max-w-screen-xl mx-auto px-4 my-8 lg:my-16 featured-item text-white bg-fixed">
+    <div className="max-w-screen-xl lg:mx-auto mx-4 px-4 my-8 lg:my-16 featured-item text-white bg-fixed">
       <div className="pt-12">
         <div className="text-center sm:text-xl lg:text-3xl border-y-2 w-64 border-dashed font-semibold border-gray-400 mx-auto">
           FEATURED ITEM
@@ -26,7 +26,7 @@ const Featured = () => {
             tangy dip, making it a must-try for food lovers.
           </p>
           <Link to="/orderfood">
-            <button className="btn btn-primary mt-4 border-0 border-b-4 border-blue-950">
+            <button className="styled-btn mt-8">
               ORDER NOW
             </button>
           </Link>

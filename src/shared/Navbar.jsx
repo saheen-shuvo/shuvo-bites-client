@@ -5,6 +5,7 @@ import AuthContext from "../context/AuthContext/AuthContext";
 import { RiShoppingCart2Fill } from "react-icons/ri";
 import useCart from "../hooks/useCart";
 import useAdmin from "../hooks/useAdmin";
+import Logo from '../assets/icon/ShuvoBites Logo.png'
 
 const Navbar = () => {
   const { user, signOutUser } = useContext(AuthContext);
@@ -78,7 +79,7 @@ const Navbar = () => {
   };
 
   return (
-    <div className="navbar fixed z-10 bg-opacity-30  bg-amber-700/50">
+    <div className="navbar fixed z-10 bg-[#FFC300] text-[#001F3F] md:px-16">
       <div className="navbar-start">
         <div className="dropdown">
           <div tabIndex={0} role="button" className="btn btn-ghost lg:hidden">
@@ -105,16 +106,16 @@ const Navbar = () => {
           </ul>
         </div>
         <div className="flex items-center gap-1">
-          <p className="text-xl font-bold text-green-800"></p>
-          <p className="text-sm md:text-xl font-bold inline text-red-600">
-            Shuvo<span className="text-yellow-400">Bites</span>
+          <img className="w-4 md:w-6" src={Logo} alt="" />
+          <p className="text-sm md:text-xl font-bold inline text-[#D72638]">
+            Shuvo<span className="text-[#001F3F]">Bites</span>
           </p>
         </div>
       </div>
       <div className="navbar-center hidden lg:flex">
         <ul className="menu menu-horizontal px-1">{links}</ul>
       </div>
-      <div className="navbar-end">
+      <div className="navbar-end ">
         {user ? (
           <>
             <div className="relative flex items-center gap-2 md:gap-6">

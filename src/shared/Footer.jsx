@@ -1,7 +1,14 @@
+import logo from "../assets/icon/ShuvoBites Logo.png";
 const Footer = () => {
   return (
-    <div>
-      <footer className="footer footer-center bg-[#a7bded] text-base-content p-10 flex flex-col">
+    <div className="mt-8 md:mt-20">
+      <footer className="footer footer-center bg-[#001F3F] text-[#FFC300] p-10 flex flex-col">
+        <div>
+          <img src={logo} alt="" />
+          <p className="text-sm md:text-xl font-bold inline text-[#D72638]">
+            Shuvo<span className="text-[#FFC300]">Bites</span>
+          </p>
+        </div>
         <nav className="grid grid-flow-col gap-4">
           <a className="link link-hover">About us</a>
           <a className="link link-hover">Contact</a>
@@ -9,7 +16,7 @@ const Footer = () => {
           <a className="link link-hover">Press kit</a>
         </nav>
         <nav>
-          <div className="grid grid-flow-col gap-4">
+          <div className="grid grid-flow-col gap-4 text-[#D72638]">
             <a>
               <svg
                 xmlns="http://www.w3.org/2000/svg"
@@ -52,7 +59,7 @@ const Footer = () => {
           </p>
         </aside>
       </footer>
-      <div className="bg-gray-800 text-gray-800">.</div>
+      <div className="bg-blue-900 text-blue-900">.</div>
     </div>
   );
 };

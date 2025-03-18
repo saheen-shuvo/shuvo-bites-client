@@ -56,7 +56,7 @@ export const router = createBrowserRouter([
       // NORMAL USER ROUTES
       {
         path: "userhome",
-        element: <UserHome></UserHome>
+        element: <UserHome></UserHome>,
       },
       {
         path: "cart",
@@ -73,25 +73,46 @@ export const router = createBrowserRouter([
       // ADMIN ROUTES
       {
         path: "adminhome",
-        element: <AdminRoute><AdminHome></AdminHome></AdminRoute>
+        element: (
+          <AdminRoute>
+            <AdminHome></AdminHome>
+          </AdminRoute>
+        ),
       },
       {
-        path: 'additems',
-        element: <AdminRoute><AddItems></AddItems></AdminRoute>
+        path: "additems",
+        element: (
+          <AdminRoute>
+            <AddItems></AddItems>
+          </AdminRoute>
+        ),
       },
       {
-        path: 'manageitems',
-        element: <AdminRoute><ManageItems></ManageItems></AdminRoute>
+        path: "manageitems",
+        element: (
+          <AdminRoute>
+            <ManageItems></ManageItems>
+          </AdminRoute>
+        ),
       },
       {
-        path: 'updateitem/:id',
-        element: <AdminRoute><UpdateItem></UpdateItem></AdminRoute>,
-        loader: ({params}) => fetch(`http://localhost:5000/menu/${params.id}`)
+        path: "updateitem/:id",
+        element: (
+          <AdminRoute>
+            <UpdateItem></UpdateItem>
+          </AdminRoute>
+        ),
+        loader: ({ params }) =>
+          fetch(`https://shuvo-bites-server.vercel.app/menu/${params.id}`),
       },
       {
-        path: 'allusers',
-        element: <AdminRoute><AllUsers></AllUsers></AdminRoute>
-      }
+        path: "allusers",
+        element: (
+          <AdminRoute>
+            <AllUsers></AllUsers>
+          </AdminRoute>
+        ),
+      },
     ],
   },
 ]);

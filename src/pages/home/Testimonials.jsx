@@ -12,16 +12,16 @@ import { ImQuotesLeft } from "react-icons/im";
 const Testimonials = () => {
   const [reviews, setReviews] = useState([]);
   useEffect(() => {
-    fetch("http://localhost:5000/reviews")
+    fetch("https://shuvo-bites-server.vercel.app/reviews")
       .then((res) => res.json())
       .then((data) => setReviews(data));
   }, []);
   return (
-    <div className="max-w-screen-xl mx-auto mt-0 lg:my-8 px-4 mb-8">
-      <div className="text-center sm:text-xl lg:text-3xl border-y-2 w-64 border-dashed font-semibold border-gray-400 mx-auto mb-8 lg:mb-0">
+    <div className="max-w-screen-xl mx-auto mt-0 lg:my-12 px-4 mb-8">
+      <div className="text-center sm:text-xl lg:text-3xl border-y-2 w-64 border-dashed font-semibold border-gray-400 mx-auto lg:mb-0">
         TESTIMONIALS
       </div>
-      <div>
+      <div className="bg-base-100 shadow-sm rounded-2xl p-4 mt-8 md:mt-16">
         <Swiper navigation={true} modules={[Navigation]} className="mySwiper">
           {reviews.map((review) => (
             <SwiperSlide>
@@ -31,7 +31,9 @@ const Testimonials = () => {
                   value={review.rating}
                   readOnly
                 />
-                <div className="text-8xl lg:my-8"><ImQuotesLeft /></div>
+                <div className="text-8xl lg:my-8">
+                  <ImQuotesLeft />
+                </div>
                 <p className="lg:py-6 text-center">{review.details}</p>
                 <h3 className="text-2xl text-orange-600">{review.name}</h3>
               </div>

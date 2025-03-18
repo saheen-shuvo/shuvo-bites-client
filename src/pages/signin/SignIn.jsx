@@ -36,18 +36,14 @@ const SignIn = () => {
       .then((result) => {
         const user = result.user;
         console.log(user);
-        navigate(from, { replace: true });
         form.reset();
         toast.success("Logged in Successfully.");
+        navigate(from, { replace: true });
       })
       .catch((error) => {
         toast.warn("Wrong Credentials. Try again.");
       });
   };
-  // axios
-  //   .post("https://job-portal-server-six-sigma.vercel.app/jwt", user, {
-  //     withCredentials: true,
-  //   })
 
   const handleValidateCaptcha = (e) => {
     e.preventDefault();
@@ -120,7 +116,7 @@ const SignIn = () => {
             {/* USED CAPTCHA: npm install react-simple-captcha */}
             <button
               onClick={handleValidateCaptcha}
-              className="btn btn-outline btn-xs mt-2 w-full"
+              className="btn shadow-sm btn-xs mt-2 w-full"
             >
               Validate
             </button>

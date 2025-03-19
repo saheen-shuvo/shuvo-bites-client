@@ -113,7 +113,7 @@ export const router = createBrowserRouter([
           </AdminRoute>
         ),
         loader: ({ params }) =>
-          fetch(`https://shuvo-bites-server.vercel.app/menu/${params.id}`),
+          fetch(`http://localhost:5000/menu/${params.id}`),
       },
       {
         path: "allusers",

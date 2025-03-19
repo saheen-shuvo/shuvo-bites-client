@@ -1,19 +1,43 @@
+/* eslint-disable no-unused-vars */
+/* eslint-disable react/no-unescaped-entities */
 import { useForm } from "react-hook-form";
+import useAuth from "../../hooks/useAuth";
+import useAxiosPublic from "../../hooks/useAxiosPublic";
 
 const AddReview = () => {
+  const axiosPublic = useAxiosPublic();
+
+  const { user } = useAuth();
   const {
     register,
     handleSubmit,
     formState: { errors },
   } = useForm();
 
-  const onSubmit = (data) => console.log(data);
+  const onSubmit = async (data) => {
+    const reviewData = {
+      ...data,
+      rating: parseFloat(data.rating),
+      details: data.details.replace(/\n/g, " ").trim(),
+      name: user?.displayName || "Anonymous",
+      email: user?.email,
+      image: user?.photoURL,
+    };
+    try {
+      const response = await axiosPublic.post("/reviews", reviewData);
+      alert("Review submitted successfully!");
+    } catch (error) {
+      console.error("Error submitting review:", error);
+      alert("Failed to submit review. Try again.");
+    }
+    console.log(reviewData);
+  };
 
   return (
     <div className=" ">
       <div
         className="text-center sm:text-xl lg:text-3xl border-y-2 w-64  border-dashed font-semibold border-gray-400 mx-auto 
-      mb-8 mt-8"
+      mb-16 mt-8"
       >
         ADD A REVIEW
       </div>
@@ -23,21 +47,21 @@ const AddReview = () => {
             What's your thought about us?
           </h1>
           <form onSubmit={handleSubmit(onSubmit)}>
-            {/* RATE OUT OF 5 */}
+            {/* Rating OUT OF 5 */}
             <label className="fieldset-label">Rate out 5</label>
             <input
               type="number"
               className="input"
               placeholder="Rate Us"
-              {...register("rate", {
+              {...register("rating", {
                 required: "Rating is required",
                 min: { value: 1, message: "Rating must be at least 1" },
                 max: { value: 5, message: "Rating cannot exceed 5" },
               })}
             />
             {/* Rating Error */}
-            {errors.rate && (
-              <p className="text-red-500 text-sm">{errors.rate.message}</p>
+            {errors.rating && (
+              <p className="text-red-500 text-sm">{errors.rating.message}</p>
             )}
 
             {/* REVIEW DESCRIPTION */}
@@ -45,7 +69,7 @@ const AddReview = () => {
             <textarea
               className="textarea h-24"
               placeholder="Review"
-              {...register("review", {
+              {...register("details", {
                 required: "Review is required",
                 maxLength: {
                   value: 101,
@@ -54,8 +78,8 @@ const AddReview = () => {
               })}
             ></textarea>
             {/* Review Error */}
-            {errors.review && (
-              <p className="text-red-500 text-sm">{errors.review.message}</p>
+            {errors.details && (
+              <p className="text-red-500 text-sm">{errors.details.message}</p>
             )}
 
             <div className="flex justify-center">

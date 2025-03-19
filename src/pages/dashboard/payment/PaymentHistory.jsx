@@ -53,7 +53,7 @@ const PaymentHistory = () => {
                   <tr>
                     <th>{index + 1}</th>
                     <td>{payment.price}$</td>
-                    <td className="text-green-800">{payment.transactionId}</td>
+                    <td className="text-green-600">{payment.transactionId}</td>
                     <td>{payment.status}</td>
                   </tr>
                 ))}

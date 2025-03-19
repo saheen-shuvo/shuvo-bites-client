@@ -4,6 +4,7 @@ import {
   FaHome,
   FaList,
   FaShoppingCart,
+  FaUserCircle,
   FaUsers,
   FaUtensils,
 } from "react-icons/fa";
@@ -41,8 +42,8 @@ const Dashboard = () => {
   return (
     <div className="flex">
       {/* DASHBOARD SIDE BAR */}
-      <div className="w-64 min-h-screen bg-orange-300">
-        <ul className="menu w-full">
+      <div className="w-64 min-h-screen bg-[#FFC300]">
+        <ul className="menu w-full text-black">
           {isAdmin ? (
             <>
               <li>
@@ -136,9 +137,16 @@ const Dashboard = () => {
           </li>
 
           <li>
-            <NavLink to="/orderfood">
+            <NavLink to="/#contact">
               <LuContact />
               Contact
+            </NavLink>
+          </li>
+
+          <li>
+            <NavLink to="/dashboard/myprofile">
+            <FaUserCircle />
+              My Profile
             </NavLink>
           </li>
         </ul>

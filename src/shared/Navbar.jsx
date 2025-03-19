@@ -5,7 +5,7 @@ import AuthContext from "../context/AuthContext/AuthContext";
 import { RiShoppingCart2Fill } from "react-icons/ri";
 import useCart from "../hooks/useCart";
 import useAdmin from "../hooks/useAdmin";
-import Logo from '../assets/icon/ShuvoBites Logo.png'
+import Logo from "../assets/icon/ShuvoBites Logo.png";
 
 const Navbar = () => {
   const { user, signOutUser } = useContext(AuthContext);
@@ -32,22 +32,26 @@ const Navbar = () => {
 
   const links = user ? (
     <>
-      <li className="font-semibold">
+      <li className="font-semibold text-black">
         <NavLink to="/">Home</NavLink>
       </li>
-      <li className="font-semibold">
+      <li className="font-semibold text-black">
         <NavLink to="/menu">Our Menu</NavLink>
       </li>
-      <li className="font-semibold">
+      <li className="font-semibold text-black">
         <NavLink to="/orderfood">Order Food</NavLink>
       </li>
-      {
-        user && isAdmin && <li className="font-semibold"><Link to='/dashboard/adminhome'>Dashboard</Link></li>
-      }
-      {
-        user && !isAdmin && <li className="font-semibold"><Link to='/dashboard/userhome'>Dashboard</Link></li>
-      }
-      <li className="font-semibold">
+      {user && isAdmin && (
+        <li className="font-semibold text-black">
+          <Link to="/dashboard/adminhome">Dashboard</Link>
+        </li>
+      )}
+      {user && !isAdmin && (
+        <li className="font-semibold text-black">
+          <Link to="/dashboard/userhome">Dashboard</Link>
+        </li>
+      )}
+      <li className="font-semibold text-black">
         <NavLink to="/dashboard/cart">
           <button className="flex justify-center items-center gap-1">
             <RiShoppingCart2Fill />
@@ -58,13 +62,13 @@ const Navbar = () => {
     </>
   ) : (
     <>
-      <li className="font-semibold">
+      <li className="font-semibold text-black">
         <NavLink to="/">Home</NavLink>
       </li>
-      <li className="font-semibold">
+      <li className="font-semibold text-black">
         <NavLink to="/menu">Our Menu</NavLink>
       </li>
-      <li className="font-semibold">
+      <li className="font-semibold text-black">
         <NavLink to="/orderfood">Order Food</NavLink>
       </li>
     </>
@@ -120,15 +124,17 @@ const Navbar = () => {
           <>
             <div className="relative flex items-center gap-2 md:gap-6">
               <div className="relative group">
-                <img
-                  className={
-                    user.photoURL
-                      ? "w-10 h-10 object-cover rounded-full"
-                      : "hidden"
-                  }
-                  src={user?.photoURL}
-                  alt=""
-                />
+                <Link to='/dashboard/myprofile'>
+                  <img
+                    className={
+                      user.photoURL
+                        ? "w-10 h-10 object-cover rounded-full"
+                        : "hidden"
+                    }
+                    src={user?.photoURL}
+                    alt=""
+                  />
+                </Link>
                 <div className="absolute bottom-[-35px] left-1/2 transform -translate-x-1/2 hidden p-2 group-hover:block text-black text-[9px] rounded-md">
                   {user?.displayName || "Unknown User"}
                 </div>

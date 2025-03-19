@@ -1,4 +1,4 @@
-/* eslint-disable react/jsx-key */
+
 import Swal from "sweetalert2";
 import useCart from "../../../hooks/useCart";
 import { MdDeleteForever } from "react-icons/md";
@@ -48,10 +48,10 @@ const Cart = () => {
         <h2 className="text-xl font-semibold">Total Price: {totalPrice}$</h2>
         {cart.length ? (
           <Link to="/dashboard/payment">
-            <button className="btn btn-primary">PAY NOW</button>
+            <button className="styled-btn">PAY NOW</button>
           </Link>
         ) : (
-          <button disabled className="btn btn-primary">
+          <button disabled className="styled-btn opacity-40">
             PAY NOW
           </button>
         )}

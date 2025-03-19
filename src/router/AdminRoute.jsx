@@ -2,6 +2,8 @@
 import { Navigate, useLocation } from "react-router-dom";
 import useAdmin from "../hooks/useAdmin";
 import useAuth from "../hooks/useAuth";
+import Lottie from "lottie-react";
+import loadingAnimation from "../../public/Animation - 1742381715655.json"
 
 const AdminRoute = ({ children }) => {
   const {user, loading} = useAuth();
@@ -10,7 +12,15 @@ const AdminRoute = ({ children }) => {
   const location = useLocation();
 
   if (loading || isAdminLoading) {
-    return <span className="loading loading-dots loading-lg"></span>;
+    return (
+      <div className="flex justify-center items-center min-h-screen">
+      <Lottie
+        animationData={loadingAnimation}
+        loop={true}
+        className="w-24 h-24"
+      />
+    </div>
+    );
   }
 
   if (user && isAdmin) {

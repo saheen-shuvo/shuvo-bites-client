@@ -3,17 +3,9 @@ import useAxiosPublic from "./useAxiosPublic";
 
 const useMenu = () => {
   const axiosPublic = useAxiosPublic();
-  // useEffect(() => {
-  //     fetch('https://shuvo-bites-server.vercel.app/menu')
-  //     .then(res => res.json())
-  //     .then(data =>{
-  //         setMenu(data);
-  //         setLoading(false);
-  //     })
-  // }, [])
   const {
     data: menu = [],
-    isPending: loading,
+    isLoading,
     refetch,
   } = useQuery({
     queryKey: ["menu"],
@@ -22,7 +14,7 @@ const useMenu = () => {
       return res.data;
     },
   });
-  return [menu, loading, refetch];
+  return [menu, isLoading, refetch];
 };
 
 export default useMenu;

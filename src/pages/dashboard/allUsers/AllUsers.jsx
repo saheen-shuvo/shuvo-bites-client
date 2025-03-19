@@ -4,10 +4,16 @@ import useAxiosSecure from "../../../hooks/useAxiosSecure";
 import { MdDeleteForever } from "react-icons/md";
 import { FaUsers } from "react-icons/fa";
 import Swal from "sweetalert2";
+import Lottie from "lottie-react";
+import loadingAnimation from "../../../../public/Animation - 1742381715655.json";
 
 const AllUsers = () => {
   const axiosSecure = useAxiosSecure();
-  const { data: allusers = [], refetch } = useQuery({
+  const {
+    data: allusers = [],
+    refetch,
+    isLoading,
+  } = useQuery({
     queryKey: ["allusers"],
     queryFn: async () => {
       const res = await axiosSecure.get("/allusers");
@@ -15,7 +21,7 @@ const AllUsers = () => {
     },
   });
 
-  const handleMakeAdmin = user => {
+  const handleMakeAdmin = (user) => {
     Swal.fire({
       title: "Are you sure?",
       text: "You won't be able to revert this!",
@@ -26,7 +32,7 @@ const AllUsers = () => {
       confirmButtonText: "Yes, make admin!",
     }).then((result) => {
       if (result.isConfirmed) {
-        axiosSecure.patch(`/allusers/admin/${user._id}`).then(res => {
+        axiosSecure.patch(`/allusers/admin/${user._id}`).then((res) => {
           console.log(res.data);
           if (res.data.modifiedCount > 0) {
             refetch();
@@ -67,56 +73,70 @@ const AllUsers = () => {
     });
   };
   return (
-    <div>
-      <div className="flex justify-evenly my-4">
-        <h2 className="text-2xl font-semibold">All Users</h2>
-        <h2 className="text-2xl font-semibold">
-          Total Users: {allusers.length}
-        </h2>
+    <div className="pt-8">
+      <div className="flex justify-evenly mb-8">
+        <div className="text-center sm:text-xl lg:text-3xl border-y-2 w-64 border-dashed font-semibold border-gray-400 mx-auto">
+          ALL USERS
+        </div>
       </div>
-      {/* TABLE */}
-      <div className="overflow-x-auto">
-        <table className="table w-full">
-          {/* head */}
-          <thead>
-            <tr>
-              <th>#</th>
-              <th>Name</th>
-              <th>Email</th>
-              <th>Role</th>
-              <th>Action</th>
-            </tr>
-          </thead>
-          <tbody>
-            {allusers.map((user, index) => (
-              <tr>
-                <th>{index + 1}</th>
-                <td className="font-semibold">{user.name}</td>
-                <td className="font-semibold">{user.email}</td>
-                <th>
-                  {
-                    user.role === 'admin' ? 'Admin' :
-                    <button
-                      onClick={() => handleMakeAdmin(user)}
-                      className="text-3xl text-yellow-700"
-                    >
-                      <FaUsers />
-                    </button>
-                  }
-                </th>
-                <th>
-                  <button
-                    onClick={() => handleDeleteUser(user)}
-                    className="text-3xl text-red-600"
-                  >
-                    <MdDeleteForever />
-                  </button>
-                </th>
-              </tr>
-            ))}
-          </tbody>
-        </table>
-      </div>
+      {isLoading ? (
+        <>
+          <div className="flex justify-center items-center my-16">
+            <Lottie
+              animationData={loadingAnimation}
+              loop={true}
+              className="w-24 h-24"
+            />
+          </div>
+        </>
+      ) : (
+        <>
+          {/* TABLE */}
+          <div className="overflow-x-auto">
+            <table className="table w-full">
+              {/* head */}
+              <thead>
+                <tr>
+                  <th>#</th>
+                  <th>Name</th>
+                  <th>Email</th>
+                  <th>Role</th>
+                  <th>Action</th>
+                </tr>
+              </thead>
+              <tbody>
+                {allusers.map((user, index) => (
+                  <tr>
+                    <th>{index + 1}</th>
+                    <td className="font-semibold">{user.name}</td>
+                    <td className="font-semibold">{user.email}</td>
+                    <th>
+                      {user.role === "admin" ? (
+                        "Admin"
+                      ) : (
+                        <button
+                          onClick={() => handleMakeAdmin(user)}
+                          className="text-3xl text-yellow-700"
+                        >
+                          <FaUsers />
+                        </button>
+                      )}
+                    </th>
+                    <th>
+                      <button
+                        onClick={() => handleDeleteUser(user)}
+                        className="text-3xl text-red-600"
+                      >
+                        <MdDeleteForever />
+                      </button>
+                    </th>
+                  </tr>
+                ))}
+              </tbody>
+            </table>
+          </div>
+        </>
+      )}
     </div>
   );
 };

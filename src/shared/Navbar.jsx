@@ -122,7 +122,7 @@ const Navbar = () => {
       <div className="navbar-end ">
         {user ? (
           <>
-            <div className="relative flex items-center gap-2 md:gap-6">
+            <div className="relative flex items-center gap-2 md:gap-4">
               <div className="relative group">
                 <Link to='/dashboard/myprofile'>
                   <img
@@ -139,7 +139,7 @@ const Navbar = () => {
                   {user?.displayName || "Unknown User"}
                 </div>
               </div>
-              <button onClick={handleSignOut} className="btn btn-primary">
+              <button onClick={handleSignOut} className="bg-[#d72638] flex items-center gap-1 px-2 py-2 rounded-lg text-white border-b-4 border-[#001f3f] transition-all hover:bg-[#b71c1c] mr-1 text-[10px] md:text-[12px] font-semibold">
                 <MdLogout />
                 <p>Log out</p>
               </button>

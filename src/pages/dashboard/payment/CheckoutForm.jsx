@@ -3,6 +3,7 @@ import { useEffect, useState } from "react";
 import useAxiosSecure from "../../../hooks/useAxiosSecure";
 import useCart from "../../../hooks/useCart";
 import useAuth from "../../../hooks/useAuth";
+import Swal from "sweetalert2";
 
 const CheckoutForm = () => {
   const [error, setError] = useState("");
@@ -84,7 +85,13 @@ const CheckoutForm = () => {
         const res = await axiosSecure.post("/payments", payment);
         console.log("payment saved", res.data);
         refetch();
-        // TODO: ADD SWEET ALERT ON SUCCESSFUL PAYMENT
+        Swal.fire({
+          position: "center",
+          title: `Payment Successful!`,
+          showConfirmButton: false,
+          icon: "success",
+          timer: 1500,
+        });
       }
     }
   };

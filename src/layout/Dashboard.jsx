@@ -1,11 +1,9 @@
 import {
   FaBook,
-  FaCalendar,
   FaHistory,
   FaHome,
   FaList,
   FaShoppingCart,
-  FaUser,
   FaUsers,
   FaUtensils,
 } from "react-icons/fa";
@@ -20,11 +18,25 @@ import {
 import { NavLink, Outlet } from "react-router-dom";
 import useCart from "../hooks/useCart";
 import useAdmin from "../hooks/useAdmin";
+import Lottie from "lottie-react";
+import loadingAnimation from "../../public/Animation - 1742381715655.json";
 
 const Dashboard = () => {
-  const [cart] = useCart();
+  // const [cart] = useCart();
 
-  const [isAdmin] = useAdmin();
+  const [isAdmin, isAdminLoading] = useAdmin();
+
+  {
+    isAdminLoading && (
+      <div className="flex justify-center items-center min-h-screen">
+        <Lottie
+          animationData={loadingAnimation}
+          loop={true}
+          className="w-24 h-24"
+        />
+      </div>
+    );
+  }
 
   return (
     <div className="flex">

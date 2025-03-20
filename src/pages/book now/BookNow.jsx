@@ -1,6 +1,8 @@
+/* eslint-disable no-unused-vars */
 import { useForm } from "react-hook-form";
 import useAuth from "../../hooks/useAuth";
 import useAxiosPublic from "../../hooks/useAxiosPublic";
+import Swal from "sweetalert2";
 
 const BookNow = () => {
   const axiosPublic = useAxiosPublic();
@@ -10,6 +12,7 @@ const BookNow = () => {
     register,
     handleSubmit,
     formState: { errors },
+    reset,
   } = useForm();
 
   const onSubmit = async (data) => {
@@ -18,15 +21,28 @@ const BookNow = () => {
       details: data.details.replace(/\n/g, " ").trim(),
       name: user?.displayName || "Anonymous",
       email: user?.email,
+      status: "pending"
     };
     try {
       const response = await axiosPublic.post("/bookings", reviewData);
-      alert("Booked successfully!");
+      Swal.fire({
+        position: "center",
+        title: `Thanks! Booked Successfully!`,
+        showConfirmButton: false,
+        icon: "success",
+        timer: 1500,
+      });
+      reset();
     } catch (error) {
       console.error("Error submitting review:", error);
-      alert("Failed to submit. Try again.");
+      Swal.fire({
+        position: "center",
+        title: `Failed to submit. Try again.`,
+        showConfirmButton: false,
+        icon: "error",
+        timer: 1500,
+      });
     }
-    console.log(reviewData);
   };
 
   return (

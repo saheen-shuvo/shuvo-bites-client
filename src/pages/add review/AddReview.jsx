@@ -3,6 +3,7 @@
 import { useForm } from "react-hook-form";
 import useAuth from "../../hooks/useAuth";
 import useAxiosPublic from "../../hooks/useAxiosPublic";
+import Swal from "sweetalert2";
 
 const AddReview = () => {
   const axiosPublic = useAxiosPublic();
@@ -12,6 +13,7 @@ const AddReview = () => {
     register,
     handleSubmit,
     formState: { errors },
+    reset,
   } = useForm();
 
   const onSubmit = async (data) => {
@@ -25,12 +27,24 @@ const AddReview = () => {
     };
     try {
       const response = await axiosPublic.post("/reviews", reviewData);
-      alert("Review submitted successfully!");
+      Swal.fire({
+        position: "center",
+        title: `Review Submitted Successfully!`,
+        showConfirmButton: false,
+        icon: "success",
+        timer: 1500,
+      });
+      reset();
     } catch (error) {
       console.error("Error submitting review:", error);
-      alert("Failed to submit review. Try again.");
+      Swal.fire({
+        position: "center",
+        title: `Failed to Submit. Try Again!`,
+        showConfirmButton: false,
+        icon: "error",
+        timer: 1500,
+      });
     }
-    console.log(reviewData);
   };
 
   return (

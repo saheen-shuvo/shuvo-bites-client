@@ -106,7 +106,7 @@ const Cart = () => {
             No items added! Wanna Add Some?
           </p>
           <button onClick={() => navigate("/orderfood")} className="styled-btn">
-            Add Items
+            ADD ITEMS
           </button>
         </div>
       )}

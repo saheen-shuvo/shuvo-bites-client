@@ -70,7 +70,7 @@ const Register = () => {
 
       const userInfo = { name, email };
 
-      axiosPublic.post('/users', userInfo)
+      axiosPublic.post('/allusers', userInfo)
       .then(res => {
         if(res.data.insertedId){
           form.reset();

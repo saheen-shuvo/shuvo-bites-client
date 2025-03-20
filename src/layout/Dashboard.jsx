@@ -9,7 +9,7 @@ import {
   FaUtensils,
 } from "react-icons/fa";
 import { FaBookBookmark } from "react-icons/fa6";
-import { FiHome } from "react-icons/fi";
+import { FiBookmark, FiHome } from "react-icons/fi";
 import { LuContact } from "react-icons/lu";
 import {
   MdOutlineLibraryBooks,
@@ -76,6 +76,13 @@ const Dashboard = () => {
                   All Users
                 </NavLink>
               </li>
+
+              <li>
+                <NavLink to="/dashboard/myprofile">
+                  <FaUserCircle />
+                  My Profile
+                </NavLink>
+              </li>
             </>
           ) : (
             <>
@@ -86,7 +93,13 @@ const Dashboard = () => {
               </li>
 
               <li>
-                <NavLink to="/dashboard/mybooking">
+                <NavLink to="/dashboard/addreview">
+                  <MdReviews></MdReviews> Add a Review
+                </NavLink>
+              </li>
+
+              <li>
+                <NavLink to="/dashboard/mybookings">
                   <FaBookBookmark></FaBookBookmark>My Bookings
                 </NavLink>
               </li>
@@ -98,14 +111,15 @@ const Dashboard = () => {
               </li>
 
               <li>
-                <NavLink to="/dashboard/addreview">
-                  <MdReviews></MdReviews> Add a Review
+                <NavLink to="/dashboard/paymenthistory">
+                  <FaHistory></FaHistory> Payment History
                 </NavLink>
               </li>
 
               <li>
-                <NavLink to="/dashboard/paymenthistory">
-                  <FaHistory></FaHistory> Payment History
+                <NavLink to="/dashboard/myprofile">
+                  <FaUserCircle />
+                  My Profile
                 </NavLink>
               </li>
             </>
@@ -136,16 +150,16 @@ const Dashboard = () => {
           </li>
 
           <li>
-            <NavLink to="https://shuvos-portfolio.netlify.app/">
-              <LuContact />
-              Contact
+            <NavLink to="/booknow">
+              <FiBookmark />
+              Book Now
             </NavLink>
           </li>
 
           <li>
-            <NavLink to="/dashboard/myprofile">
-            <FaUserCircle />
-              My Profile
+            <NavLink to="https://shuvos-portfolio.netlify.app/">
+              <LuContact />
+              Contact
             </NavLink>
           </li>
         </ul>

@@ -97,7 +97,7 @@ const AddReview = () => {
             )}
 
             <div className="flex justify-center">
-              <button className="styled-btn mt-4">Submit</button>
+              <button className="styled-btn mt-4">SUBMIT</button>
             </div>
           </form>
         </div>

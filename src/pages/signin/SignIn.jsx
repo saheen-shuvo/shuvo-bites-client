@@ -116,13 +116,13 @@ const SignIn = () => {
             {/* USED CAPTCHA: npm install react-simple-captcha */}
             <button
               onClick={handleValidateCaptcha}
-              className="btn shadow-sm btn-xs mt-2 w-full"
+              className="btn shadow-sm btn-xs mt-2"
             >
               Validate
             </button>
           </div>
-          <div className="form-control mt-6">
-            <button disabled={disabled} className="btn btn-primary w-full">
+          <div className="form-control flex justify-center mt-6">
+            <button disabled={disabled} className="styled-btn w-full">
               Sign in
             </button>
           </div>

@@ -158,8 +158,8 @@ const Register = () => {
               </span>
             </label>
           </div>
-          <div className="form-control mt-2">
-            <button className="btn btn-primary w-full">Sign up</button>
+          <div className="form-control flex justify-center mt-2">
+            <button className="styled-btn w-full">Sign up</button>
           </div>
           <div className="divider my-0">OR</div>
           <div className="flex justify-center">

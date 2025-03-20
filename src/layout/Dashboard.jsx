@@ -17,7 +17,6 @@ import {
   MdReviews,
 } from "react-icons/md";
 import { NavLink, Outlet } from "react-router-dom";
-import useCart from "../hooks/useCart";
 import useAdmin from "../hooks/useAdmin";
 import Lottie from "lottie-react";
 import loadingAnimation from "../../public/Animation - 1742381715655.json";
@@ -137,7 +136,7 @@ const Dashboard = () => {
           </li>
 
           <li>
-            <NavLink to="/#contact">
+            <NavLink to="https://shuvos-portfolio.netlify.app/">
               <LuContact />
               Contact
             </NavLink>

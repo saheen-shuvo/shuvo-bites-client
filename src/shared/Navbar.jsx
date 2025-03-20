@@ -47,9 +47,14 @@ const Navbar = () => {
         </li>
       )}
       {user && !isAdmin && (
-        <li className="font-semibold text-black">
-          <Link to="/dashboard/userhome">Dashboard</Link>
-        </li>
+        <>
+          <li className="font-semibold text-black">
+            <NavLink to="/booknow">Book Now</NavLink>
+          </li>
+          <li className="font-semibold text-black">
+            <Link to="/dashboard/userhome">Dashboard</Link>
+          </li>
+        </>
       )}
       <li className="font-semibold text-black">
         <NavLink to="/dashboard/cart">
@@ -124,7 +129,7 @@ const Navbar = () => {
           <>
             <div className="relative flex items-center gap-2 md:gap-4">
               <div className="relative group">
-                <Link to='/dashboard/myprofile'>
+                <Link to="/dashboard/myprofile">
                   <img
                     className={
                       user.photoURL
@@ -139,7 +144,10 @@ const Navbar = () => {
                   {user?.displayName || "Unknown User"}
                 </div>
               </div>
-              <button onClick={handleSignOut} className="bg-[#d72638] flex items-center gap-1 px-2 py-2 rounded-lg text-white border-b-4 border-[#001f3f] transition-all hover:bg-[#b71c1c] mr-1 text-[10px] md:text-[12px] font-semibold">
+              <button
+                onClick={handleSignOut}
+                className="bg-[#d72638] flex items-center gap-1 px-2 py-2 rounded-lg text-white border-b-4 border-[#001f3f] transition-all hover:bg-[#b71c1c] mr-1 text-[10px] md:text-[12px] font-semibold"
+              >
                 <MdLogout />
                 <p>Log out</p>
               </button>

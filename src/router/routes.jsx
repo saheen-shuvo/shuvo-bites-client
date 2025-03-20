@@ -19,6 +19,7 @@ import UserHome from "../pages/dashboard/userHome/UserHome";
 import AdminHome from "../pages/dashboard/adminHome/AdminHome";
 import MyProfile from "../shared/MyProfile";
 import AddReview from "../pages/add review/AddReview";
+import BookNow from "../pages/book now/BookNow";
 
 export const router = createBrowserRouter([
   {
@@ -36,6 +37,10 @@ export const router = createBrowserRouter([
       {
         path: "/orderfood",
         element: <OderFood></OderFood>,
+      },
+      {
+        path: "/booknow",
+        element: <BookNow></BookNow>,
       },
       {
         path: "/signin",

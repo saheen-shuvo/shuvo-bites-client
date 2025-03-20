@@ -68,7 +68,7 @@ const MyProfile = () => {
             alt=""
           />
         </div>
-        <h6 className="font-semibold text-lg text-yellow-500 text-center">
+        <h6 className="font-semibold text-xl mt-1 text-[#001F3F] text-center">
           {user?.displayName}
         </h6>
       </div>

@@ -21,6 +21,7 @@ import MyProfile from "../shared/MyProfile";
 import AddReview from "../pages/add review/AddReview";
 import BookNow from "../pages/book now/BookNow";
 import MyBookings from "../pages/my bookings/MyBookings";
+import ManageBookings from "../pages/manage bookings/ManageBookings";
 
 export const router = createBrowserRouter([
   {
@@ -112,6 +113,14 @@ export const router = createBrowserRouter([
         element: (
           <AdminRoute>
             <ManageItems></ManageItems>
+          </AdminRoute>
+        ),
+      },
+      {
+        path: "managebookings",
+        element: (
+          <AdminRoute>
+            <ManageBookings></ManageBookings>
           </AdminRoute>
         ),
       },

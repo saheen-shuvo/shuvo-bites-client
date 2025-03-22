@@ -1,5 +1,4 @@
 /* eslint-disable react/jsx-key */
-/* eslint-disable no-undef */
 import { useQuery } from "@tanstack/react-query";
 import useAuth from "../../hooks/useAuth";
 import useAxiosPublic from "../../hooks/useAxiosPublic";

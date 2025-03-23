@@ -1,3 +1,4 @@
+/* eslint-disable no-unused-vars */
 /* eslint-disable react/prop-types */
 import useAuth from "../../../hooks/useAuth";
 import { useQuery } from "@tanstack/react-query";
@@ -100,7 +101,7 @@ const AdminHome = () => {
           <div className="stat-title">Revenue</div>
           <div className="stat-value flex gap-2">
             ${stats.revenue}{" "}
-            <div className="stat-figure text-secondary text-2xl">
+            <div className="stat-figure text-[#FFC300] text-2xl">
               <FaCircleDollarToSlot />
             </div>
           </div>
@@ -110,7 +111,7 @@ const AdminHome = () => {
           <div className="stat-title">Users</div>
           <div className="stat-value flex gap-2">
             {stats.totalUsers}{" "}
-            <div className="stat-figure text-secondary text-3xl">
+            <div className="stat-figure text-[#FFC300] text-3xl">
               <FaUsers />
             </div>
           </div>
@@ -120,7 +121,7 @@ const AdminHome = () => {
           <div className="stat-title">Menu Items</div>
           <div className="stat-value flex gap-2">
             {stats.totalMenuItems}{" "}
-            <div className="stat-figure text-secondary text-3xl">
+            <div className="stat-figure text-[#FFC300] text-3xl">
               <FaUsers />
             </div>
           </div>
@@ -130,7 +131,7 @@ const AdminHome = () => {
           <div className="stat-title">Orders</div>
           <div className="stat-value flex items gap-2">
             {stats.totalOrders}{" "}
-            <div className="stat-figure text-secondary text-3xl">
+            <div className="stat-figure text-[#FFC300] text-3xl">
               <RiCaravanFill />
             </div>
           </div>

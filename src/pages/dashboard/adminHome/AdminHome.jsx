@@ -15,6 +15,7 @@ import {
   PieChart,
   Pie,
   Legend,
+  ResponsiveContainer,
 } from "recharts";
 
 const colors = ["#0088FE", "#00C49F", "#FFBB28", "#FF8042", "red", "pink"];
@@ -92,9 +93,9 @@ const AdminHome = () => {
   })
 
   return (
-    <div>
-      <h2> Hi, Welcome {user?.displayName ? user.displayName : "Back"}</h2>
-      <div className="stats shadow">
+    <div className="mx-2 lg:mx-0">
+      <h2 className="mt-4 md:mt-0 font-bold text-xl md:text-3xl"> Hi, Welcome Back {user?.displayName ? user.displayName : "Back"}!</h2>
+      <div className="stats shadow flex flex-col md:flex-row mt-8">
         <div className="stat">
           <div className="stat-title">Revenue</div>
           <div className="stat-value flex gap-2">
@@ -135,57 +136,49 @@ const AdminHome = () => {
           </div>
         </div>
       </div>
-      <div className="flex">
-        <div className="w-1/2">
+      <div className="flex flex-col lg:flex-row gap-4 my-8">
+      {/* Bar Chart Section */}
+      <div className="w-full lg:w-1/2 h-80">
+        <ResponsiveContainer width="100%" height="100%">
           <BarChart
-            width={500}
-            height={300}
             data={chartData}
-            margin={{
-              top: 20,
-              right: 30,
-              left: 20,
-              bottom: 5,
-            }}
+            margin={{ top: 20, right: 20, left: 0, bottom: 5 }}
           >
             <CartesianGrid strokeDasharray="3 3" />
             <XAxis dataKey="category" />
             <YAxis />
-            <Bar
-              dataKey="quantity"
-              fill="#8884d8"
-              shape={<TriangleBar />}
-              label={{ position: "top" }}
-            >
+            <Bar dataKey="quantity" fill="#8884d8" label={{ position: "top" }}>
               {chartData.map((entry, index) => (
-                <Cell key={`cell-${index}`} fill={colors[index % 6]} />
+                <Cell key={`cell-${index}`} fill={colors[index % colors.length]} />
               ))}
             </Bar>
           </BarChart>
-        </div>
-        <div className="w-1/2">
-          <PieChart width={400} height={400}>
+        </ResponsiveContainer>
+      </div>
+
+      {/* Pie Chart Section */}
+      <div className="w-full lg:w-1/2 h-80">
+        <ResponsiveContainer width="100%" height="100%">
+          <PieChart>
             <Pie
               data={pieChartData}
               cx="50%"
               cy="50%"
               labelLine={false}
               label={renderCustomizedLabel}
-              outerRadius={80}
+              outerRadius="80%"
               fill="#8884d8"
               dataKey="value"
             >
               {pieChartData.map((entry, index) => (
-                <Cell
-                  key={`cell-${index}`}
-                  fill={COLORS[index % COLORS.length]}
-                />
+                <Cell key={`cell-${index}`} fill={colors[index % colors.length]} />
               ))}
             </Pie>
-            <Legend></Legend>
+            <Legend />
           </PieChart>
-        </div>
+        </ResponsiveContainer>
       </div>
+    </div>
     </div>
   );
 };

@@ -55,7 +55,7 @@ const MyProfile = () => {
 
   return (
     <div>
-      <div className="text-center sm:text-xl lg:text-3xl border-y-2 w-52 border-dashed font-semibold border-gray-400 mx-auto my-8">
+      <div className="text-center sm:text-xl lg:text-3xl border-y-2 w-52 border-dashed font-semibold border-gray-400 mx-auto my-4 md:my-8">
         MY PROFILE
       </div>
       {/* DETAILS */}

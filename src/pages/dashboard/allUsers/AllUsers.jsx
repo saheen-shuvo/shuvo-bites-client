@@ -73,7 +73,7 @@ const AllUsers = () => {
     });
   };
   return (
-    <div className="pt-8">
+    <div className="pt-4 md:pt-8">
       <div className="flex justify-evenly mb-8">
         <div className="text-center sm:text-xl lg:text-3xl border-y-2 w-64 border-dashed font-semibold border-gray-400 mx-auto">
           ALL USERS
@@ -91,8 +91,8 @@ const AllUsers = () => {
         </>
       ) : (
         <>
-          {/* TABLE */}
-          <div className="overflow-x-auto">
+          {/* TABLE FOR LARGE SCREEN*/}
+          <div className="overflow-x-auto hidden md:block">
             <table className="table w-full">
               {/* head */}
               <thead>
@@ -134,6 +134,55 @@ const AllUsers = () => {
                 ))}
               </tbody>
             </table>
+          </div>
+
+          {/* TABLE FOR SMALL SCREEN */}
+          <div className="overflow-x-auto block md:hidden">
+            {allusers.map((user, index) => (
+              <table className="table table-zebra mb-4 border-2 border-gray-200 shadow-sm">
+                <tbody>
+                  <tr>
+                    <th>Serial</th>
+                    <td>{index + 1}</td>
+                  </tr>
+                  <tr>
+                    <th>Name</th>
+                    <td>{user.name}</td>
+                  </tr>
+                  <tr>
+                    <th>Email</th>
+                    <td>{user.email}</td>
+                  </tr>
+                  <tr>
+                    <th>Role</th>
+                    <td>
+                      {" "}
+                      {user.role === "admin" ? (
+                        "Admin"
+                      ) : (
+                        <button
+                          onClick={() => handleMakeAdmin(user)}
+                          className="text-3xl text-yellow-700"
+                        >
+                          <FaUsers />
+                        </button>
+                      )}
+                    </td>
+                  </tr>
+                  <tr>
+                    <th>Action</th>
+                    <td>
+                      <button
+                        onClick={() => handleDeleteUser(user)}
+                        className="text-3xl text-red-600"
+                      >
+                        <MdDeleteForever />
+                      </button>
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
+            ))}
           </div>
         </>
       )}

@@ -46,7 +46,7 @@ const AddItems = () => {
 
   return (
     <div>
-      <div className="pt-8">
+      <div className="pt-4 md:pt-8">
         <div className="text-center sm:text-xl lg:text-3xl border-y-2 w-64 border-dashed font-semibold border-gray-400 mx-auto">
           ADD AN ITEM
         </div>

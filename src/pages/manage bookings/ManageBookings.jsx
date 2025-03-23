@@ -25,55 +25,56 @@ const ManageBookings = () => {
 
   const handleStatus = async (id) => {
     Swal.fire({
-        title: "Are you sure?",
-        text: "You won't be able to revert this!",
-        icon: "warning",
-        showCancelButton: true,
-        confirmButtonColor: "#3085d6",
-        cancelButtonColor: "#d33",
-        confirmButtonText: "Confirm Booking!",
-      }).then(async (result) => {
-        if (result.isConfirmed) {
-          const res = await axiosPublic.patch(`/bookings/${id}`, {status: "booked"});
-          if (res.data.modifiedCount > 0) {
-            Swal.fire({
-              title: "Confirmed!",
-              text: "The Reservation is Confirmed as Booked!",
-              icon: "success",
-            });
-            refetch();
-          }
+      title: "Are you sure?",
+      text: "You won't be able to revert this!",
+      icon: "warning",
+      showCancelButton: true,
+      confirmButtonColor: "#3085d6",
+      cancelButtonColor: "#d33",
+      confirmButtonText: "Confirm Booking!",
+    }).then(async (result) => {
+      if (result.isConfirmed) {
+        const res = await axiosPublic.patch(`/bookings/${id}`, {
+          status: "booked",
+        });
+        if (res.data.modifiedCount > 0) {
+          Swal.fire({
+            title: "Confirmed!",
+            text: "The Reservation is Confirmed as Booked!",
+            icon: "success",
+          });
+          refetch();
         }
-      });
-  }
+      }
+    });
+  };
 
-    const handleDelete = async (id) => {
-      Swal.fire({
-        title: "Are you sure?",
-        text: "You won't be able to revert this!",
-        icon: "warning",
-        showCancelButton: true,
-        confirmButtonColor: "#3085d6",
-        cancelButtonColor: "#d33",
-        confirmButtonText: "Yes, Cancel!",
-      }).then(async (result) => {
-        if (result.isConfirmed) {
-          const res = await axiosPublic.delete(`/bookings/${id}`);
-          if (res.data.deletedCount > 0) {
-            Swal.fire({
-              title: "Deleted!",
-              text: "Your file has been deleted.",
-              icon: "success",
-            });
-            refetch();
-          }
+  const handleDelete = async (id) => {
+    Swal.fire({
+      title: "Are you sure?",
+      text: "You won't be able to revert this!",
+      icon: "warning",
+      showCancelButton: true,
+      confirmButtonColor: "#3085d6",
+      cancelButtonColor: "#d33",
+      confirmButtonText: "Yes, Cancel!",
+    }).then(async (result) => {
+      if (result.isConfirmed) {
+        const res = await axiosPublic.delete(`/bookings/${id}`);
+        if (res.data.deletedCount > 0) {
+          Swal.fire({
+            title: "Deleted!",
+            text: "Your file has been deleted.",
+            icon: "success",
+          });
+          refetch();
         }
-      });
-    };
-  
+      }
+    });
+  };
 
   return (
-    <div className="pt-8">
+    <div className="pt-4 md:pt-8">
       <div className="mb-8 text-center sm:text-xl lg:text-3xl border-y-2 w-72 border-dashed font-semibold border-gray-400 mx-auto">
         MANAGE BOOKINGS
       </div>
@@ -90,52 +91,113 @@ const ManageBookings = () => {
       ) : (
         <>
           {bookings.length > 0 ? (
-            <div className="overflow-x-auto">
-              <table className="table table-zebra">
-                {/* head */}
-                <thead>
-                  <tr>
-                    <th>#</th>
-                    <th>Booked By</th>
-                    <th>Email</th>
-                    <th>Date</th>
-                    <th>Package</th>
-                    <th>Status</th>
-                    <th>Action</th>
-                  </tr>
-                </thead>
-                <tbody>
-                  {bookings.map((booking, index) => (
+            <div>
+              {/* FOR LARGE SCREEN */}
+              <div className="overflow-x-auto hidden md:block">
+                <table className="table table-zebra">
+                  {/* head */}
+                  <thead>
                     <tr>
-                      <th>{index + 1}</th>
-                      <td>{booking.name}</td>
-                      <td>{booking.email}</td>
-                      <td>{booking.date}</td>
-                      <td>{booking.seats}</td>
-                      <td>
-                        {" "}
-                        <button onClick={() => handleStatus(booking._id)}
-                          className={`btn btn-xs text-white uppercase w-16 ${
-                            booking.status === "pending"
-                              ? "bg-amber-600"
-                              : "bg-green-700"
-                          }`}
-                        >
-                          {booking.status}
-                        </button>
-                      </td>
-                      <td>
-                        <button
-                          onClick={() => handleDelete(booking._id)}
-                          className="text-red-700 text-2xl"
-                        >
-                          <MdDeleteForever />
-                        </button>
-                      </td>
+                      <th>#</th>
+                      <th>Booked By</th>
+                      <th>Email</th>
+                      <th>Date</th>
+                      <th>Package</th>
+                      <th>Status</th>
+                      <th>Action</th>
                     </tr>
-                  ))}
-                </tbody>
-              </table>
+                  </thead>
+                  <tbody>
+                    {bookings.map((booking, index) => (
+                      <tr>
+                        <th>{index + 1}</th>
+                        <td>{booking.name}</td>
+                        <td>{booking.email}</td>
+                        <td>{booking.date}</td>
+                        <td>{booking.seats}</td>
+                        <td>
+                          {" "}
+                          <button
+                            onClick={() => handleStatus(booking._id)}
+                            className={`btn btn-xs text-white uppercase w-16 ${
+                              booking.status === "pending"
+                                ? "bg-amber-600"
+                                : "bg-green-700"
+                            }`}
+                          >
+                            {booking.status}
+                          </button>
+                        </td>
+                        <td>
+                          <button
+                            onClick={() => handleDelete(booking._id)}
+                            className="text-red-700 text-2xl"
+                          >
+                            <MdDeleteForever />
+                          </button>
+                        </td>
+                      </tr>
+                    ))}
+                  </tbody>
+                </table>
+              </div>
+
+              {/* FOR SMALL SCREEN */}
+              <div className="overflow-x-auto block md:hidden">
+                {bookings.map((booking, index) => (
+                  <table className="table table-zebra mb-4 border-2 border-gray-200 shadow-sm">
+                    <tbody>
+                      <tr>
+                        <th>Serial</th>
+                        <td>{index + 1}</td>
+                      </tr>
+                      <tr>
+                        <th>Booked By</th>
+                        <td>{booking.name}</td>
+                      </tr>
+                      <tr>
+                        <th>Email</th>
+                        <td>{booking.email}</td>
+                      </tr>
+                      <tr>
+                        <th>Date</th>
+                        <td>{booking.date}</td>
+                      </tr>
+                      <tr>
+                        <th>Package</th>
+                        <td>{booking.seats}</td>
+                      </tr>
+                      <tr>
+                        <th>Status</th>
+                        <td>
+                          {" "}
+                          <button
+                            onClick={() => handleStatus(booking._id)}
+                            className={`btn btn-xs text-white uppercase w-16 ${
+                              booking.status === "pending"
+                                ? "bg-amber-600"
+                                : "bg-green-700"
+                            }`}
+                          >
+                            {booking.status}
+                          </button>
+                        </td>
+                      </tr>
+                      <tr>
+                        <th>Action</th>
+                        <td>
+                          <button
+                            onClick={() => handleDelete(booking._id)}
+                            className="text-red-700 text-2xl"
+                          >
+                            <MdDeleteForever />
+                          </button>
+                        </td>
+                      </tr>
+                    </tbody>
+                  </table>
+                ))}
+              </div>
             </div>
           ) : (
             <div className="text-center py-10">

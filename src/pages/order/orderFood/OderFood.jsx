@@ -1,6 +1,6 @@
 /* eslint-disable react/jsx-key */
 import { useState } from "react";
-import orderImg from "../../../assets/menu/order.jpg";
+import orderImg from "../../../assets/home/banner.jpg";
 import Cover from "../../../shared/cover/Cover";
 import { Tab, Tabs, TabList, TabPanel } from "react-tabs";
 import "react-tabs/style/react-tabs.css";
@@ -17,8 +17,8 @@ const OderFood = () => {
     const drinks = menu.filter(item => item.category === 'drinks');
 
   return (
-    <div className="">
-      <Cover menuImg={orderImg} title="ORDER FOOD"></Cover>
+    <div className="pt-16">
+      <Cover menuImg={orderImg} title="ORDER FOOD" description="Place an order for your favorite meal and have it delivered right to your doorstep, making dining convenient and hassle-free."></Cover>
       <div className="text-center sm:text-xl lg:text-3xl border-y-2 w-64 border-dashed font-semibold border-gray-400 mx-auto mt-8">
         ORDER NOW
       </div>

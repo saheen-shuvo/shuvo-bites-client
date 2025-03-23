@@ -54,7 +54,7 @@ const BookNow = () => {
         >
           BOOK NOW
         </div>
-        <div className="card  w-full max-w-sm shrink-0 shadow-md mx-auto">
+        <div className="card  w-full max-w-sm shrink-0 shadow-md mx-auto mb-12">
           <div className="card-body">
             <h1 className="text-center text-base md:text-lg font-semibold my-4">
               Fill This Out to Make a Reservation!

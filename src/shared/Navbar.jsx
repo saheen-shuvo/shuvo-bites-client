@@ -88,7 +88,7 @@ const Navbar = () => {
   };
 
   return (
-    <div className="bg-[#FFC300] fixed  z-10  navbar flex justify-center">
+    <div className="bg-[#ffaa00b4] fixed  z-10  navbar flex justify-center">
       <div className="navbar fixed  z-10 max-w-screen-xl">
         <div className="navbar-start">
           <div className="dropdown">

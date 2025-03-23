@@ -1,7 +1,7 @@
 import logo from "../assets/icon/ShuvoBites Logo.png";
 const Footer = () => {
   return (
-    <div className="mt-8 md:mt-20">
+    <div className="">
       <footer className="footer footer-center bg-[#001F3F] text-[#FFC300] p-10 flex flex-col">
         <div>
           <img src={logo} alt="" />

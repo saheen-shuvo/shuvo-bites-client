@@ -13,7 +13,7 @@ const Payment = () => {
           PAYMENT
         </div>
       </div>
-      <div>
+      <div className="mt-16">
         <Elements stripe={stripePromise}>
           <CheckoutForm></CheckoutForm>
         </Elements>

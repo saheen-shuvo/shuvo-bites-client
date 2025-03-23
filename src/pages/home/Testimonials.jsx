@@ -17,7 +17,7 @@ const Testimonials = () => {
       .then((data) => setReviews(data));
   }, []);
   return (
-    <div className="max-w-screen-xl mx-auto mt-0 lg:my-12 px-4 mb-8">
+    <div className="max-w-screen-xl mx-auto mt-0 my-12 lg:my-24 px-4">
       <div className="text-center sm:text-xl lg:text-3xl border-y-2 w-64 border-dashed font-semibold border-gray-400 mx-auto lg:mb-0">
         TESTIMONIALS
       </div>

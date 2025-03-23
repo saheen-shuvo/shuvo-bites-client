@@ -4,6 +4,7 @@ import useAuth from "../../../hooks/useAuth";
 import useAxiosSecure from "../../../hooks/useAxiosSecure";
 import loadingAnimation from "../../../../public/Animation - 1742381715655.json";
 import Lottie from "lottie-react";
+import { Link } from "react-router-dom";
 
 const PaymentHistory = () => {
   const { user } = useAuth();
@@ -37,7 +38,9 @@ const PaymentHistory = () => {
         </>
       ) : (
         <>
-          <div className="overflow-x-auto">
+        {
+          payments.length > 0 ? (
+            <div className="overflow-x-auto">
             <table className="table table-zebra">
               {/* head */}
               <thead>
@@ -60,6 +63,17 @@ const PaymentHistory = () => {
               </tbody>
             </table>
           </div>
+          ) : (
+            <div className="text-center py-10">
+            <p className="text-xl font-semibold my-24">
+              No Payment History Found! Wanna Order Something?
+            </p>
+            <Link to='/orderfood'>
+              <button className="styled-btn">ORDER NOW</button>
+            </Link>
+          </div>
+          )
+        }
         </>
       )}
     </div>

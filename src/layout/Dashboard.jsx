@@ -12,6 +12,7 @@ import { FaBookBookmark } from "react-icons/fa6";
 import { FiBookmark, FiHome } from "react-icons/fi";
 import { LuContact } from "react-icons/lu";
 import {
+  MdDeliveryDining,
   MdOutlineLibraryBooks,
   MdOutlineShoppingBag,
   MdReviews,
@@ -60,6 +61,12 @@ const Dashboard = () => {
               <li>
                 <NavLink to="/dashboard/manageitems">
                   <FaList></FaList> Manage Items
+                </NavLink>
+              </li>
+
+              <li>
+                <NavLink to="/dashboard/manageorders">
+                <MdDeliveryDining /> Manage Orders
                 </NavLink>
               </li>
 
@@ -205,6 +212,12 @@ const Dashboard = () => {
                   <li>
                     <NavLink to="/dashboard/manageitems">
                       <FaList></FaList> Manage Items
+                    </NavLink>
+                  </li>
+
+                  <li>
+                    <NavLink to="/dashboard/manageorders">
+                    <MdDeliveryDining /> Manage Orders
                     </NavLink>
                   </li>
 

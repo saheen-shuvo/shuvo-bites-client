@@ -1,9 +1,15 @@
 /* eslint-disable react/prop-types */
-
+import { motion } from "framer-motion";
 const MenuItemCard = ({ item }) => {
   const { image, name, price, recipe } = item;
   return (
-    <div className="flex justify-between bg-base-100 p-4 shadow-sm rounded-xl">
+    <motion.div
+      initial={{ opacity: 0, y: 50 }}
+      whileInView={{ opacity: 1, y: 0 }}
+      viewport={{ once: true, amount: 0.2 }}
+      transition={{ duration: 0.6 }}
+      className="flex justify-between bg-base-100 p-4 shadow-sm rounded-xl"
+    >
       <div className="flex space-x-4">
         <img
           style={{ borderRadius: "0 200px 200px" }}
@@ -18,7 +24,7 @@ const MenuItemCard = ({ item }) => {
         </div>
       </div>
       <p className="text-yellow-600">${price}</p>
-    </div>
+    </motion.div>
   );
 };
 

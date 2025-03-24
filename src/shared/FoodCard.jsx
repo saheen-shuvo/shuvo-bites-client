@@ -33,7 +33,6 @@ const FoodCard = ({ item }) => {
             showConfirmButton: false,
             timer: 1500,
           });
-          // Refetch to update the cart count
           refetch();
         }
       });

@@ -77,7 +77,7 @@ const CheckoutForm = () => {
           email: user.email,
           price: totalPrice,
           transactionId: paymentIntent.id,
-          date: new Date(), //UTC data convert using moment js
+          date: new Date(),
           cartIds: cart.map((item) => item._id),
           menuItemIds: cart.map((item) => item.menuId),
           status: "pending",

@@ -14,6 +14,8 @@ import authImg from "../../assets/others/authentication2.png";
 import SocialLogin from "../../shared/SocialLogin";
 
 const SignIn = () => {
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
   const captchaRef = useRef(null);
   const [disabled, setDisabled] = useState(true);
   useEffect(() => {
@@ -55,6 +57,17 @@ const SignIn = () => {
     }
   };
 
+  // Test Log in
+  const handleTestLogin = (role) => {
+    if (role === "admin") {
+      setEmail("shuvo@gmail.com");
+      setPassword("Sa123456");
+    } else if (role === "user") {
+      setEmail("dipto182@gmail.com");
+      setPassword("Sa123456");
+    }
+  };
+
   return (
     <div className="auth-bg hero min-h-screen flex flex-col lg:flex-row-reverse items-center justify-center p-4 lg:gap-28">
       {/* Animation Section */}
@@ -63,8 +76,26 @@ const SignIn = () => {
       </div>
 
       {/* Form Section */}
-      <div className="card  w-full max-w-sm lg:w-[70%] shadow-2xl p-6 bg-base-300 mb-8 lg:mb-0">
+      <div className="card  w-full max-w-sm lg:w-[70%] shadow-2xl p-6 bg-base-300 my-8 md:my-24">
         <h1 className="text-center text-3xl font-bold mb-6">Sign in now!</h1>
+        <div>
+          <h1 className="text-base">Demo Login for Testing: </h1>
+          <div className="flex gap-1 my-1">
+            <button
+              onClick={() => handleTestLogin("admin")}
+              className="btn btn-xs shadow-sm w-[70px]"
+            >
+              Admin
+            </button>
+            <button
+              onClick={() => handleTestLogin("user")}
+              className="btn btn-xs shadow-sm w-[70px]"
+            >
+              User
+            </button>
+          </div>
+        </div>
+
         <form onSubmit={handleSignIn} className="space-y-4">
           <div className="form-control">
             <label className="label">
@@ -74,6 +105,7 @@ const SignIn = () => {
               type="email"
               name="email"
               placeholder="email"
+              value={email}
               className="input input-bordered"
               required
             />
@@ -86,6 +118,7 @@ const SignIn = () => {
               type="password"
               name="password"
               placeholder="password"
+              value={password}
               className="input input-bordered"
               required
             />

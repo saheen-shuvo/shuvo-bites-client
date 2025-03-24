@@ -1,11 +1,11 @@
 /* eslint-disable no-unused-vars */
 import { useForm } from "react-hook-form";
 import useAuth from "../../hooks/useAuth";
-import useAxiosPublic from "../../hooks/useAxiosPublic";
 import Swal from "sweetalert2";
+import useAxiosSecure from "../../hooks/useAxiosSecure";
 
 const BookNow = () => {
-  const axiosPublic = useAxiosPublic();
+  const axiosSecure = useAxiosSecure();
 
   const { user } = useAuth();
   const {
@@ -24,7 +24,7 @@ const BookNow = () => {
       status: "pending"
     };
     try {
-      const response = await axiosPublic.post("/bookings", reviewData);
+      const response = await axiosSecure.post("/bookings", reviewData);
       Swal.fire({
         position: "center",
         title: `Thanks! Booked Successfully!`,

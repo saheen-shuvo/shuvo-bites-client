@@ -2,11 +2,11 @@
 /* eslint-disable react/no-unescaped-entities */
 import { useForm } from "react-hook-form";
 import useAuth from "../../hooks/useAuth";
-import useAxiosPublic from "../../hooks/useAxiosPublic";
 import Swal from "sweetalert2";
+import useAxiosSecure from "../../hooks/useAxiosSecure";
 
 const AddReview = () => {
-  const axiosPublic = useAxiosPublic();
+  const axiosSecure = useAxiosSecure();
 
   const { user } = useAuth();
   const {
@@ -26,7 +26,7 @@ const AddReview = () => {
       image: user?.photoURL,
     };
     try {
-      const response = await axiosPublic.post("/reviews", reviewData);
+      const response = await axiosSecure.post("/reviews", reviewData);
       Swal.fire({
         position: "center",
         title: `Review Submitted Successfully!`,

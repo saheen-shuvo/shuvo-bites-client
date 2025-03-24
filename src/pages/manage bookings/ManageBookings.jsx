@@ -1,14 +1,14 @@
 /* eslint-disable react/jsx-key */
 import { useQuery } from "@tanstack/react-query";
-import useAxiosPublic from "../../hooks/useAxiosPublic";
 import { Link } from "react-router-dom";
 import Lottie from "lottie-react";
 import loadingAnimation from "../../../public/Animation - 1742381715655.json";
 import { MdDeleteForever } from "react-icons/md";
 import Swal from "sweetalert2";
+import useAxiosSecure from "../../hooks/useAxiosSecure";
 
 const ManageBookings = () => {
-  const axiosPublic = useAxiosPublic();
+  const axiosSecure = useAxiosSecure();
 
   // Get all bookings data from backend
   const {
@@ -18,7 +18,7 @@ const ManageBookings = () => {
   } = useQuery({
     queryKey: ["bookings"],
     queryFn: async () => {
-      const res = await axiosPublic.get(`/bookings`);
+      const res = await axiosSecure.get(`/bookings`);
       return res.data;
     },
   });
@@ -34,7 +34,7 @@ const ManageBookings = () => {
       confirmButtonText: "Confirm Booking!",
     }).then(async (result) => {
       if (result.isConfirmed) {
-        const res = await axiosPublic.patch(`/bookings/${id}`, {
+        const res = await axiosSecure.patch(`/bookings/${id}`, {
           status: "booked",
         });
         if (res.data.modifiedCount > 0) {
@@ -60,7 +60,7 @@ const ManageBookings = () => {
       confirmButtonText: "Yes, Cancel!",
     }).then(async (result) => {
       if (result.isConfirmed) {
-        const res = await axiosPublic.delete(`/bookings/${id}`);
+        const res = await axiosSecure.delete(`/bookings/${id}`);
         if (res.data.deletedCount > 0) {
           Swal.fire({
             title: "Deleted!",

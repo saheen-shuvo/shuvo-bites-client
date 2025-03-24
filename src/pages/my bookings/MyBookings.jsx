@@ -1,14 +1,14 @@
 /* eslint-disable react/jsx-key */
 import { useQuery } from "@tanstack/react-query";
 import useAuth from "../../hooks/useAuth";
-import useAxiosPublic from "../../hooks/useAxiosPublic";
 import Lottie from "lottie-react";
 import loadingAnimation from "../../../public/Animation - 1742381715655.json";
 import Swal from "sweetalert2";
 import { Link } from "react-router-dom";
+import useAxiosSecure from "../../hooks/useAxiosSecure";
 
 const MyBookings = () => {
-  const axiosPublic = useAxiosPublic();
+  const axiosSecure = useAxiosSecure();
   const { user } = useAuth();
   const {
     data: bookings = [],
@@ -17,7 +17,7 @@ const MyBookings = () => {
   } = useQuery({
     queryKey: ["bookings", user?.email],
     queryFn: async () => {
-      const res = await axiosPublic.get(`/bookings/${user.email}`);
+      const res = await axiosSecure.get(`/bookings/${user.email}`);
       return res.data;
     },
   });
@@ -33,7 +33,7 @@ const MyBookings = () => {
       confirmButtonText: "Yes, Cancel!",
     }).then(async (result) => {
       if (result.isConfirmed) {
-        const res = await axiosPublic.delete(`/bookings/${id}`);
+        const res = await axiosSecure.delete(`/bookings/${id}`);
         if (res.data.deletedCount > 0) {
           Swal.fire({
             title: "Deleted!",

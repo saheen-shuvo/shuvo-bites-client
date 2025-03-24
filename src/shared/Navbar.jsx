@@ -52,7 +52,7 @@ const Navbar = () => {
             <NavLink to="/booknow">Book Now</NavLink>
           </li>
           <li className="font-semibold text-black">
-            <Link to="/dashboard/userhome">Dashboard</Link>
+            <Link to="/dashboard/cart">Dashboard</Link>
           </li>
         </>
       )}

@@ -15,7 +15,6 @@ import ManageItems from "../pages/dashboard/manageItems/ManageItems";
 import UpdateItem from "../pages/dashboard/updateItem/UpdateItem";
 import Payment from "../pages/dashboard/payment/Payment";
 import PaymentHistory from "../pages/dashboard/payment/PaymentHistory";
-import UserHome from "../pages/dashboard/userHome/UserHome";
 import AdminHome from "../pages/dashboard/adminHome/AdminHome";
 import MyProfile from "../shared/MyProfile";
 import AddReview from "../pages/add review/AddReview";
@@ -64,10 +63,6 @@ export const router = createBrowserRouter([
     ),
     children: [
       // NORMAL USER ROUTES
-      {
-        path: "userhome",
-        element: <UserHome></UserHome>,
-      },
       {
         path: "cart",
         element: <Cart></Cart>,

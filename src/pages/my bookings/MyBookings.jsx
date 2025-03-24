@@ -47,11 +47,8 @@ const MyBookings = () => {
   };
 
   return (
-    <div>
-      <div
-        className="text-center sm:text-xl lg:text-3xl border-y-2 w-64  border-dashed font-semibold border-gray-400 mx-auto 
-      mb-16 mt-8"
-      >
+    <div className="pt-4 md:pt-8">
+      <div className="mb-8 text-center sm:text-xl lg:text-3xl border-y-2 w-64 border-dashed font-semibold border-gray-400 mx-auto">
         MY BOOKINGS
       </div>
       {isLoading ? (
@@ -67,51 +64,104 @@ const MyBookings = () => {
       ) : (
         <>
           {bookings.length > 0 ? (
-            <div className="overflow-x-auto">
-              <table className="table table-zebra">
-                {/* head */}
-                <thead>
-                  <tr>
-                    <th>#</th>
-                    <th>Date</th>
-                    <th>Package</th>
-                    <th>Status</th>
-                    <th>Action</th>
-                  </tr>
-                </thead>
-                <tbody>
-                  {bookings.map((booking, index) => (
+            <>
+              {/* TABLE FOR LARGE SCREEN */}
+              <div className="overflow-x-auto hidden md:block">
+                <table className="table table-zebra">
+                  {/* head */}
+                  <thead>
                     <tr>
-                      <th>{index + 1}</th>
-                      <td>{booking.date}</td>
-                      <td>{booking.seats}</td>
-                      <td>{booking.status}</td>
-                      <td>
-                        {" "}
-                        {booking.status === "pending" ? (
-                          <button
-                            onClick={() => handleDelete(booking._id)}
-                            className="styled-btn"
-                          >
-                            Cancel
-                          </button>
-                        ) : (
-                          <button className="bg-[#d3858d] flex items-center gap-1 px-[11px] py-[6px] rounded-lg text-white border-b-4 border-[#001f3f] transition-all mr-1 text-[10px] md:text-[12px] font-semibold" disabled>
-                            Booked
-                          </button>
-                        )}
-                      </td>
+                      <th>#</th>
+                      <th>Date</th>
+                      <th>Package</th>
+                      <th>Status</th>
+                      <th>Action</th>
                     </tr>
-                  ))}
-                </tbody>
-              </table>
-            </div>
+                  </thead>
+                  <tbody>
+                    {bookings.map((booking, index) => (
+                      <tr>
+                        <th>{index + 1}</th>
+                        <td>{booking.date}</td>
+                        <td>{booking.seats}</td>
+                        <td>{booking.status}</td>
+                        <td>
+                          {" "}
+                          {booking.status === "pending" ? (
+                            <button
+                              onClick={() => handleDelete(booking._id)}
+                              className="styled-btn"
+                            >
+                              Cancel
+                            </button>
+                          ) : (
+                            <button
+                              className="bg-[#d3858d] flex items-center gap-1 px-[11px] py-[6px] rounded-lg text-white border-b-4 border-[#001f3f] transition-all mr-1 text-[10px] md:text-[12px] font-semibold"
+                              disabled
+                            >
+                              Booked
+                            </button>
+                          )}
+                        </td>
+                      </tr>
+                    ))}
+                  </tbody>
+                </table>
+              </div>
+
+              {/* TABLE FOR SMALL SCREEN */}
+              <div className="overflow-x-auto block md:hidden">
+                {bookings.map((booking, index) => (
+                  <table className="table table-zebra mb-4 border-2 border-gray-200 shadow-sm">
+                    <tbody>
+                      <tr>
+                        <th>Serial</th>
+                        <td>{index + 1}</td>
+                      </tr>
+                      <tr>
+                        <th>Date</th>
+                        <td>{booking.date}</td>
+                      </tr>
+                      <tr>
+                        <th>Package</th>
+                        <td>{booking.seats}</td>
+                      </tr>
+                      <tr>
+                        <th>Status</th>
+                        <td>{booking.status}</td>
+                      </tr>
+                      <tr>
+                        <th>Action</th>
+                        <td>
+                          {" "}
+                          {booking.status === "pending" ? (
+                            <button
+                              onClick={() => handleDelete(booking._id)}
+                              className="styled-btn"
+                            >
+                              Cancel
+                            </button>
+                          ) : (
+                            <button
+                              className="bg-[#d3858d] flex items-center gap-1 px-[11px] py-[6px] rounded-lg text-white border-b-4 border-[#001f3f] transition-all mr-1 text-[10px] md:text-[12px] font-semibold"
+                              disabled
+                            >
+                              Booked
+                            </button>
+                          )}
+                        </td>
+                      </tr>
+                    </tbody>
+                  </table>
+                ))}
+              </div>
+            </>
           ) : (
             <div className="text-center py-10">
               <p className="text-xl font-semibold my-24">
                 No Booking Found! Wanna Book Now?
               </p>
-              <Link to='/booknow'>
+              <Link to="/booknow">
                 <button className="styled-btn">BOOK NOW</button>
               </Link>
             </div>

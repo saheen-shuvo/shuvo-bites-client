@@ -19,11 +19,8 @@ const PaymentHistory = () => {
   });
 
   return (
-    <div>
-      <div
-        className="text-center sm:text-xl lg:text-3xl border-y-2 w-64 lg:w-72 border-dashed font-semibold border-gray-400 mx-auto 
-      mb-8 mt-8"
-      >
+    <div className="pt-4 md:pt-8">
+      <div className="mb-8 text-center sm:text-xl lg:text-3xl border-y-2 w-72 border-dashed font-semibold border-gray-400 mx-auto">
         PAYMENT HISTORY
       </div>
       {isLoading ? (
@@ -38,42 +35,101 @@ const PaymentHistory = () => {
         </>
       ) : (
         <>
-        {
-          payments.length > 0 ? (
-            <div className="overflow-x-auto">
-            <table className="table table-zebra">
-              {/* head */}
-              <thead>
-                <tr>
-                  <th>#</th>
-                  <th>Price</th>
-                  <th>Transaction Id</th>
-                  <th>Status</th>
-                </tr>
-              </thead>
-              <tbody>
+          {payments.length > 0 ? (
+            <>
+              {/* TABLE FOR LARGE SCREEN */}
+              <div className="overflow-x-auto hidden md:block">
+                <table className="table table-zebra">
+                  {/* head */}
+                  <thead>
+                    <tr>
+                      <th>#</th>
+                      <th>Date</th>
+                      <th>Price</th>
+                      <th>Transaction Id</th>
+                      <th>Status</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    {payments.map((payment, index) => (
+                      <tr>
+                        <td>{index + 1}</td>
+                        <td>
+                          {" "}
+                          {new Date(payment.date).toLocaleString("en-US", {
+                            year: "numeric",
+                            month: "long",
+                            day: "numeric",
+                            hour: "2-digit",
+                            minute: "2-digit",
+                            second: "2-digit",
+                            hour12: true,
+                          })}
+                        </td>
+                        <td>{payment.price}$</td>
+                        <td className="text-green-600">
+                          {payment.transactionId}
+                        </td>
+                        <td>{payment.status}</td>
+                      </tr>
+                    ))}
+                  </tbody>
+                </table>
+              </div>
+
+              {/* TABLE FOR SMALL SCREEN */}
+              <div className="overflow-x-auto block md:hidden">
                 {payments.map((payment, index) => (
-                  <tr>
-                    <th>{index + 1}</th>
-                    <td>{payment.price}$</td>
-                    <td className="text-green-600">{payment.transactionId}</td>
-                    <td>{payment.status}</td>
-                  </tr>
+                  <table className="table table-zebra mb-4 border-2 border-gray-200 shadow-sm">
+                    <tbody>
+                      <tr>
+                        <th>Serial</th>
+                        <td>{index + 1}</td>
+                      </tr>
+                      <tr>
+                        <th>Date</th>
+                        <td>
+                          {" "}
+                          {new Date(payment.date).toLocaleString("en-US", {
+                            year: "numeric",
+                            month: "long",
+                            day: "numeric",
+                            hour: "2-digit",
+                            minute: "2-digit",
+                            second: "2-digit",
+                            hour12: true,
+                          })}
+                        </td>
+                      </tr>
+                      <tr>
+                        <th>Price</th>
+                        <td>{payment.price}</td>
+                      </tr>
+                      <tr>
+                        <th>Transaction Id</th>
+                        <td className="text-green-600">
+                          {payment.transactionId}
+                        </td>
+                      </tr>
+                      <tr>
+                        <th>Status</th>
+                        <td>{payment.status}</td>
+                      </tr>
+                    </tbody>
+                  </table>
                 ))}
-              </tbody>
-            </table>
-          </div>
+              </div>
+            </>
           ) : (
             <div className="text-center py-10">
-            <p className="text-xl font-semibold my-24">
-              No Payment History Found! Wanna Order Something?
-            </p>
-            <Link to='/orderfood'>
-              <button className="styled-btn">ORDER NOW</button>
-            </Link>
-          </div>
-          )
-        }
+              <p className="text-xl font-semibold my-24">
+                No Payment History Found! Wanna Order Something?
+              </p>
+              <Link to="/orderfood">
+                <button className="styled-btn">ORDER NOW</button>
+              </Link>
+            </div>
+          )}
         </>
       )}
     </div>

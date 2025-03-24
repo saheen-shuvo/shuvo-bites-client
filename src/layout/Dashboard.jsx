@@ -66,7 +66,7 @@ const Dashboard = () => {
 
               <li>
                 <NavLink to="/dashboard/manageorders">
-                <MdDeliveryDining /> Manage Orders
+                  <MdDeliveryDining /> Manage Orders
                 </NavLink>
               </li>
 
@@ -93,12 +93,6 @@ const Dashboard = () => {
             </>
           ) : (
             <>
-              <li>
-                <NavLink to="/dashboard/userhome">
-                  <FaHome></FaHome>User Home
-                </NavLink>
-              </li>
-
               <li>
                 <NavLink to="/dashboard/addreview">
                   <MdReviews></MdReviews> Add a Review
@@ -217,7 +211,7 @@ const Dashboard = () => {
 
                   <li>
                     <NavLink to="/dashboard/manageorders">
-                    <MdDeliveryDining /> Manage Orders
+                      <MdDeliveryDining /> Manage Orders
                     </NavLink>
                   </li>
 
@@ -244,12 +238,6 @@ const Dashboard = () => {
                 </>
               ) : (
                 <>
-                  <li>
-                    <NavLink to="/dashboard/userhome">
-                      <FaHome></FaHome>User Home
-                    </NavLink>
-                  </li>
-
                   <li>
                     <NavLink to="/dashboard/addreview">
                       <MdReviews></MdReviews> Add a Review

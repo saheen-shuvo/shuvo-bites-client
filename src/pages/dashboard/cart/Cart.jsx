@@ -39,8 +39,8 @@ const Cart = () => {
   };
 
   return (
-    <div>
-      <div className="text-center sm:text-xl lg:text-3xl border-y-2 w-52 border-dashed font-semibold border-gray-400 mx-auto my-8">
+    <div className="pt-4 md:pt-8">
+      <div className="mb-8 text-center sm:text-xl lg:text-3xl border-y-2 w-52 border-dashed font-semibold border-gray-400 mx-auto">
         MY CART
       </div>
       <div className="flex justify-around items-center">

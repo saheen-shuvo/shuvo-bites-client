@@ -115,11 +115,13 @@ const Navbar = () => {
               {links}
             </ul>
           </div>
-          <div className="flex items-center gap-1">
-            <img className="w-4 md:w-6" src={Logo} alt="" />
-            <p className="text-sm md:text-xl font-bold inline text-[#D72638]">
-              Shuvo<span className="text-[#001F3F]">Bites</span>
-            </p>
+          <div>
+            <Link to='/' className="flex items-center gap-1">
+              <img className="w-4 md:w-6" src={Logo} alt="" />
+              <p className="text-sm md:text-xl font-bold inline text-[#D72638]">
+                Shuvo<span className="text-[#001F3F]">Bites</span>
+              </p>
+            </Link>
           </div>
         </div>
         <div className="navbar-center hidden lg:flex">

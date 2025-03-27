@@ -3,7 +3,7 @@
 Shuvo Bites is a restaurant management system designed to streamline food ordering, table reservations, and customer interactions. Built using the MERN stack and Tailwind CSS, this platform provides a seamless experience for both customers and restaurant administrators.
 
 ## 🚀 Live Demo
-[Shuvo Bites - Live Website](#https://shuvo-bites.web.app)
+[Shuvo Bites - https://shuvo-bites.web.app]
 
 ## 🎯 Project Goal
 The goal of Shuvo Bites is to provide an efficient and user-friendly restaurant management system where customers can:

@@ -43,7 +43,7 @@ const SignIn = () => {
         navigate(from, { replace: true });
       })
       .catch((error) => {
-        toast.warn("Wrong Credentials. Try again.");
+        toast.warn("Wrong Credentials. Try again.",error);
       });
   };
 
@@ -106,6 +106,7 @@ const SignIn = () => {
               name="email"
               placeholder="email"
               value={email}
+              onChange={(e) => setEmail(e.target.value)}
               className="input input-bordered"
               required
             />
@@ -119,6 +120,7 @@ const SignIn = () => {
               name="password"
               placeholder="password"
               value={password}
+              onChange={(e) => setPassword(e.target.value)}
               className="input input-bordered"
               required
             />

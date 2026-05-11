@@ -40,6 +40,17 @@ Shuvo Bites is a full-stack restaurant management platform where users can brows
 - Manage orders
 - Manage bookings
 
+<img width="1080" height="880" alt="2" src="https://github.com/user-attachments/assets/60701927-6a37-41a8-a558-ba3075676ede" />
+
+<img width="1080" height="1080" alt="3" src="https://github.com/user-attachments/assets/c93a043a-7c16-4fd8-bc34-c4f7c325dc17" />
+
+<img width="1080" height="1080" alt="4" src="https://github.com/user-attachments/assets/e29918fa-339f-4297-9b8b-2f96a1deadba" />
+
+<img width="1080" height="1080" alt="5" src="https://github.com/user-attachments/assets/3c797bfd-3d6e-41f9-b452-cd712fc6fca7" />
+
+<img width="1080" height="1080" alt="6" src="https://github.com/user-attachments/assets/e66f94df-ee47-496e-84c0-6e50be3ca256" />
+
+
 ## 🛠️ Tech Stack
 
 - **Frontend:** React, React Router, Tailwind CSS, DaisyUI, TanStack Query, Axios

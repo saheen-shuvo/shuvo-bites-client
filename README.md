@@ -48,6 +48,27 @@ Shuvo Bites is a full-stack restaurant management platform where users can brows
 - **Auth:** Firebase Authentication + JWT
 - **Payment:** Stripe
 
+## ⚡ Challenges Faced
+
+- **Real-Time Order Updates:** Implementing a smooth order status update system for both customers and admins.
+- **Optimizing Performance:** Ensuring fast loading times for menus and orders.
+- **Authentication Management:** Securing user data and managing different user roles efficiently.
+
+## 🔑 Admin Credentials
+
+- **Email:** shuvo@gmail.com
+- **Password:** Sa123456
+
+## 🔑 User Credentials
+
+- **Email:** dipto182@gmail.com
+- **Password:** Sa123456
+
+## 📞 Contact
+
+For any queries, reach out: **saheenshuvo182@gmail.com**  
+or, Whatsapp me at: **+8801751967704**
+
 ## ⚙️ Frontend Setup
 
 1. Clone the repository:
